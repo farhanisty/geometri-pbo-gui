@@ -12,16 +12,15 @@ public class menu extends JFrame {
 
     JPanel panel2D = new JPanel(new GridLayout(0, 4, 15, 15));
     JPanel panel3D = new JPanel(new GridLayout(0, 4, 15, 15));
-
+    JPanel mainPanel = new JPanel(null);  // Using null layout for precise positioning
     JButton btnKeluar = new JButton("Keluar");
 
     public menu() {
         setTitle("Menu Utama Geometri");
-        setSize(750, 650);
-        setLayout(null);
+        setSize(750, 650);  // Back to original size
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
+        setResizable(true);  // Allow resizing
 
         // Atur LookAndFeel default (agar background dan style mengikuti bawaan NetBeans)
         try {
@@ -29,32 +28,35 @@ public class menu extends JFrame {
             SwingUtilities.updateComponentTreeUI(this);
         } catch (Exception ignored) {}
 
+        // Setup main panel
+        mainPanel.setPreferredSize(new Dimension(700, 1000));  // Set content size
+
         // Header
         labelHeader.setBounds(200, 10, 350, 40);
         labelHeader.setFont(new Font("Segoe UI", Font.BOLD, 26));
-        add(labelHeader);
+        mainPanel.add(labelHeader);
 
         // Label kategori
         label2D.setBounds(50, 60, 200, 25);
         label2D.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        add(label2D);
+        mainPanel.add(label2D);
 
         label3D.setBounds(50, 330, 200, 25);
         label3D.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        add(label3D);
+        mainPanel.add(label3D);
 
         // Panel bangun 2D
         panel2D.setBounds(50, 90, 640, 220);
-        add(panel2D);
+        mainPanel.add(panel2D);
 
         // Panel bangun 3D
-        panel3D.setBounds(50, 360, 640, 180);
-        add(panel3D);
+        panel3D.setBounds(50, 360, 640, 560);
+        mainPanel.add(panel3D);
 
         // Tombol keluar
-        btnKeluar.setBounds(300, 560, 140, 40);
+        btnKeluar.setBounds(300, 940, 140, 40);
         btnKeluar.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        add(btnKeluar);
+        mainPanel.add(btnKeluar);
 
         btnKeluar.addActionListener(e -> {
             int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin keluar?", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -62,6 +64,15 @@ public class menu extends JFrame {
                 System.exit(0);
             }
         });
+
+        // Create scroll pane
+        JScrollPane scrollPane = new JScrollPane(mainPanel);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);  // Smoother scrolling
+
+        // Add scroll pane to frame
+        add(scrollPane);
 
         // Tambahkan bangun datar (2D)
         String[] bangun2D = {
@@ -75,7 +86,7 @@ public class menu extends JFrame {
         // Tambahkan bangun ruang (3D)
         String[] bangun3D = {
             "Prisma Segitiga", "Limas Segitiga", "Prisma Persegi", "Limas Persegi",
-            "Prisma P. Panjang", "Limas P. Panjang", "Prisma J. Genjang", "Limas J. Genjang",
+            "Prisma Persegi Panjang", "Limas Persegi Panjang", "Prisma Jajaran Genjang", "Limas Jajaran Genjang",
             "Prisma Trapesium", "Limas Trapesium", "Tabung", "Kerucut",
             "Kerucut Terpancung", "Bola", "Tembereng Bola", "Juring Bola", "Cincin Bola"
         };
@@ -116,7 +127,7 @@ public class menu extends JFrame {
         box.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(null, "Menu " + namaBangun + " dibuka.");
+                new guigeometri.Input(namaBangun).setVisible(true);
             }
         });
 
