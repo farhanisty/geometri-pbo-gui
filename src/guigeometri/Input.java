@@ -173,6 +173,10 @@ public class Input extends JFrame {
         resultDialog.setVisible(true);
     }
     
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             new Input().setVisible(true);
