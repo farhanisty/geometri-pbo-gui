@@ -59,4 +59,16 @@ public class Persegi extends BangunDatar implements Runnable, Inputable {
         inputs.add("sisi");
         return inputs;
     }
+    
+    @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
+    }
+    
+    
 }

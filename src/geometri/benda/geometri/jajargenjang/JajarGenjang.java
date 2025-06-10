@@ -64,4 +64,16 @@ public class JajarGenjang extends BangunDatar implements Runnable {
         inputs.add("Tinggi");
         return inputs;
     }
+    
+        @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
+    }
+    
+    
 }

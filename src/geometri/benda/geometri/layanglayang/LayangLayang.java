@@ -67,4 +67,16 @@ public class LayangLayang extends BangunDatar implements Runnable {
         inputs.add("Sisi Panjang");
         return inputs;
     }
+    
+        @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
+    }
+    
+    
 }
