@@ -4,11 +4,13 @@
  */
 package geometri.benda.geometri;
 
+import guigeometri.Inputable;
+
 /**
  *
  * @author farhannivta
  */
-public abstract class BangunDatar implements Benda {
+public abstract class BangunDatar implements Benda, Inputable {
     public abstract double hitungLuas();
     public abstract double hitungKeliling();
 }
