@@ -76,8 +76,8 @@ public class menu extends JFrame {
 
         // Tambahkan bangun datar (2D)
         String[] bangun2D = {
-            "Segitiga", "Persegi", "Persegi Panjang", "Jajar Genjang", "Trapesium",
-            "Belah Ketupat", "Layang Layang", "Lingkaran", "Tembereng", "Juring"
+            "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
+            "BelahKetupat", "LayangLayang", "Lingkaran", "Tembereng", "Juring"
         };
         for (String bangun : bangun2D) {
             panel2D.add(createBangunButton(bangun));
@@ -85,10 +85,10 @@ public class menu extends JFrame {
 
         // Tambahkan bangun ruang (3D)
         String[] bangun3D = {
-            "Prisma Segitiga", "Limas Segitiga", "Prisma Persegi", "Limas Persegi",
-            "Prisma Persegi Panjang", "Limas Persegi Panjang", "Prisma Jajaran Genjang", "Limas Jajaran Genjang",
-            "Prisma Trapesium", "Limas Trapesium", "Tabung", "Kerucut",
-            "Kerucut Terpancung", "Bola", "Tembereng Bola", "Juring Bola", "Cincin Bola"
+            "PrismaSegitiga", "LimasSegitiga", "PrismaPersegi", "LimasPersegi",
+            "PrismaPersegiPanjang", "LimasPersegiPanjang", "PrismaJajaranGenjang", "LimasJajaranGenjang",
+            "PrismaTrapesium", "LimasTrapesium", "Tabung", "Kerucut",
+            "KerucutTerpancung", "Bola", "TemberengBola", "JuringBola", "CincinBola"
         };
         for (String bangun : bangun3D) {
             panel3D.add(createBangunButton(bangun));
@@ -98,10 +98,10 @@ public class menu extends JFrame {
     private JPanel createBangunButton(String namaBangun) {
         JPanel box = new JPanel();
         box.setLayout(new BorderLayout());
-        box.setPreferredSize(new Dimension(140, 100));
+        box.setPreferredSize(new Dimension(180, 180));
         box.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1),
-            BorderFactory.createEmptyBorder(5, 5, 5, 5)
+            BorderFactory.createEmptyBorder(4, 4, 4, 4)
         ));
 
         // Gambar/icon
@@ -113,8 +113,11 @@ public class menu extends JFrame {
             gambar.setIcon(new ImageIcon(image));
         } catch (Exception e) {
             gambar.setText("🧱"); // fallback jika gambar tidak ditemukan
-            gambar.setHorizontalAlignment(SwingConstants.CENTER);
+            
         }
+        
+        gambar.setHorizontalAlignment(SwingConstants.CENTER);
+        
 
         JLabel label = new JLabel(namaBangun, SwingConstants.CENTER);
         label.setFont(new Font("Segoe UI", Font.PLAIN, 13));
