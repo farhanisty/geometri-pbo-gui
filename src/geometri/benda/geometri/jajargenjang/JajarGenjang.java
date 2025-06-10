@@ -5,6 +5,8 @@
 package geometri.benda.geometri.jajargenjang;
 
 import geometri.benda.geometri.BangunDatar;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -52,5 +54,14 @@ public class JajarGenjang extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Datar");
+        inputs.add("Sisi Miring");
+        inputs.add("Tinggi");
+        return inputs;
     }
 }

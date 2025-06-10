@@ -5,6 +5,8 @@
 package geometri.benda.geometri.segitiga;
 
 import geometri.benda.geometri.BangunDatar;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -54,5 +56,15 @@ public class Segitiga extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Satu");
+        inputs.add("Sisi Dua");
+        inputs.add("Sisi Alas");
+        inputs.add("Tinggi");
+        return inputs;
     }
 }
