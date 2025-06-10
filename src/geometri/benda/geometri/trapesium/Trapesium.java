@@ -5,6 +5,8 @@
 package geometri.benda.geometri.trapesium;
 
 import geometri.benda.geometri.BangunDatar;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -56,5 +58,16 @@ public class Trapesium extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Atas");
+        inputs.add("Sisi Alas");
+        inputs.add("Sisi Miring Satu");
+        inputs.add("Sisi Miring Dua");
+        inputs.add("Tinggi");
+        return inputs;
     }
 }

@@ -5,6 +5,8 @@
 package geometri.benda.geometri.persegi;
 
 import geometri.benda.geometri.BangunDatar;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -50,5 +52,13 @@ public class PersegiPanjang extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+    
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Pendek");
+        inputs.add("Sisi Panjang");
+        return inputs;
     }
 }

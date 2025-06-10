@@ -5,12 +5,15 @@
 package geometri.benda.geometri.belahketupat;
 
 import geometri.benda.geometri.BangunDatar;
+import guigeometri.Inputable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author farhannivta
  */
-public class BelahKetupat extends BangunDatar implements Runnable {
+public class BelahKetupat extends BangunDatar implements Runnable, Inputable {
     public double sisi;
     public double diagonalSatu;
     public double diagonalDua;
@@ -52,5 +55,14 @@ public class BelahKetupat extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+         List<String> inputs = new ArrayList<>();
+        inputs.add("sisi");
+        inputs.add("diagonal satu");
+        inputs.add("diagonal dua");
+        return inputs;
     }
 }

@@ -5,6 +5,8 @@
 package geometri.benda.geometri.layanglayang;
 
 import geometri.benda.geometri.BangunDatar;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -54,5 +56,15 @@ public class LayangLayang extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Diagonal Satu");
+        inputs.add("Diagonal Dua");
+        inputs.add("Sisi Pendek");
+        inputs.add("Sisi Panjang");
+        return inputs;
     }
 }

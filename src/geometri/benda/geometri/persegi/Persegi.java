@@ -5,12 +5,15 @@
 package geometri.benda.geometri.persegi;
 
 import geometri.benda.geometri.BangunDatar;
+import guigeometri.Inputable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author farhannivta
  */
-public class Persegi extends BangunDatar implements Runnable {
+public class Persegi extends BangunDatar implements Runnable, Inputable {
     public double luas;
     public double keliling;
     public double sisi;
@@ -48,5 +51,12 @@ public class Persegi extends BangunDatar implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("sisi");
+        return inputs;
     }
 }

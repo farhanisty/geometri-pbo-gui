@@ -1,5 +1,8 @@
 package guigeometri;
 
+import geometri.benda.geometri.belahketupat.BelahKetupat;
+import geometri.benda.geometri.persegi.Persegi;
+import guigeometri.Inputable;
 import javax.swing.*;
 import java.awt.*;
 
@@ -73,12 +76,17 @@ public class Input extends JFrame {
     private void createTrapesiumInputs() {
         inputPanel.setLayout(new GridLayout(5, 2, 10, 10));
         
+        Inputable inputable = new BelahKetupat(0, 0, 0);
+        
+        for(String input: inputable.getInputs()) {
+            addInputField(input);
+        }
         // Create and add input fields
-        addInputField("Sisi Atas (a)");
-        addInputField("Sisi Bawah (b)");
-        addInputField("Tinggi (t)");
-        addInputField("Sisi Miring Kiri");
-        addInputField("Sisi Miring Kanan");
+//        addInputField("Sisi Atas (a)");
+//        addInputField("Sisi Bawah (b)");
+//        addInputField("Tinggi (t)");
+//        addInputField("Sisi Miring Kiri");
+//        addInputField("Sisi Miring Kanan");
     }
     
     private JTextField addInputField(String label) {
