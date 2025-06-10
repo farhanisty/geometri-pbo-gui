@@ -1,10 +1,13 @@
 package guigeometri;
 
+import geometri.benda.geometri.BangunDatar;
 import geometri.benda.geometri.belahketupat.BelahKetupat;
 import geometri.benda.geometri.persegi.Persegi;
 import guigeometri.Inputable;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Input extends JFrame {
     private String bangunType;
@@ -114,11 +117,13 @@ public class Input extends JFrame {
         try {
             
             Component[] components = inputPanel.getComponents();
-            double[] values = new double[5];
+            List<double> inputs = new ArrayList<>();
+            
             int valueIndex = 0;
             
             for (Component comp : components) {
                 if (comp instanceof JTextField) {
+                    inputs.add(Double.parseDouble((JTextField) comp).getText());
                     values[valueIndex++] = Double.parseDouble(((JTextField) comp).getText());
                 }
             }
@@ -138,8 +143,11 @@ public class Input extends JFrame {
         }
     }
     
-    private void showResults(double luas, double keliling) {
-        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunType, true);
+    private void showResults(BangunDatar bangunDatar) {
+        bangunDatar.hitungLuas();
+        bangunDatar.hitungKeliling();
+        
+        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunDatar.getNama(), true);
         resultDialog.setSize(300, 200);
         resultDialog.setLocationRelativeTo(this);
         
@@ -148,8 +156,8 @@ public class Input extends JFrame {
         resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         
-        String luasStr = String.format("%.2f", luas);
-        String kelilingStr = String.format("%.2f", keliling);
+        String luasStr = String.format("%.2f", bangunDatar.keliling);
+        String kelilingStr = String.format("%.2f", bangunDatar.luas);
         
         JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
         luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));

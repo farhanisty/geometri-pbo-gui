@@ -11,6 +11,9 @@ import guigeometri.Inputable;
  * @author farhannivta
  */
 public abstract class BangunDatar implements Benda, Inputable {
+    public double luas;
+    public double keliling;
+    
     public abstract double hitungLuas();
     public abstract double hitungKeliling();
 }
