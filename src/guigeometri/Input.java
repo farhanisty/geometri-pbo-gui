@@ -2,18 +2,41 @@ package guigeometri;
 
 import geometri.benda.geometri.BangunDatar;
 import geometri.benda.geometri.belahketupat.BelahKetupat;
+import geometri.benda.geometri.jajargenjang.JajarGenjang;
+import geometri.benda.geometri.layanglayang.LayangLayang;
+import geometri.benda.geometri.lingkaran.JuringLingkaran;
+import geometri.benda.geometri.lingkaran.Lingkaran;
+import geometri.benda.geometri.lingkaran.TemberengLingkaran;
 import geometri.benda.geometri.persegi.Persegi;
+import geometri.benda.geometri.persegi.PersegiPanjang;
+import geometri.benda.geometri.segitiga.Segitiga;
+import geometri.benda.geometri.trapesium.Trapesium;
 import guigeometri.Inputable;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.GridLayout;
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Input extends JFrame {
     private String bangunType;
     private JPanel inputPanel;
     private JPanel mainPanel;
+    private BangunDatar bangunDatar;
     
+    String[] bangun2D = {
+        "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
+        "BelahKetupat", "LayangLayang", "Lingkaran", "Tembereng", "Juring"
+    };
+    
+    String[] bangun3D = {
+        "PrismaSegitiga", "LimasSegitiga", "PrismaPersegi", "LimasPersegi",
+        "PrismaPersegiPanjang", "LimasPersegiPanjang", "PrismaJajaranGenjang", "LimasJajaranGenjang",
+        "PrismaTrapesium", "LimasTrapesium", "Tabung", "Kerucut",
+        "KerucutTerpancung", "Bola", "TemberengBola", "JuringBola", "CincinBola"
+    };
     public Input() {
         this("Trapesium"); 
     }
@@ -48,17 +71,13 @@ public class Input extends JFrame {
     private void createComponents() {
         inputPanel = new JPanel();
         
-        switch (bangunType) {
-            case "Trapesium":
-                createTrapesiumInputs();
-                break;
-            
-            default:
-                JLabel label = new JLabel("Bentuk " + bangunType + " belum diimplementasikan");
-                inputPanel.add(label);
-                break;
+        if (Arrays.asList(bangun2D).contains(this.bangunType) || Arrays.asList(bangun3D).contains(this.bangunType)) {
+            createInputs();
         }
-        
+        else {
+            JLabel label = new JLabel("Bentuk " + bangunType + " belum diimplementasikan");
+            inputPanel.add(label);
+        }
         mainPanel.add(inputPanel);
         mainPanel.add(Box.createVerticalStrut(20));
         
@@ -76,20 +95,62 @@ public class Input extends JFrame {
         mainPanel.add(buttonPanel);
     }
     
-    private void createTrapesiumInputs() {
+    private void createInputs() {
         inputPanel.setLayout(new GridLayout(5, 2, 10, 10));
         
-        Inputable inputable = new BelahKetupat(0, 0, 0);
-        
-        for(String input: inputable.getInputs()) {
-            addInputField(input);
+        switch (this.bangunType) {
+            case "Segitiga":
+                bangunDatar = new Segitiga(0, 0, 0, 0);
+                for (String input: bangunDatar.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "Persegi":
+                Persegi persegi = new Persegi(0);
+                for (String input: persegi.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "PersegiPanjang":
+                PersegiPanjang persegipanjang = new PersegiPanjang(0, 0);
+                for (String input: persegipanjang.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "JajarGenjang":
+                JajarGenjang jajargenjang = new JajarGenjang(0, 0, 0);
+                for (String input: jajargenjang.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "Trapesium":
+                Trapesium trapesium = new Trapesium(0, 0, 0, 0, 0);
+                for (String input: trapesium.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "BelahKetupat":
+                BelahKetupat belahketupat = new BelahKetupat(0, 0, 0);
+                for (String input: belahketupat.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "LayangLayang":
+                LayangLayang layanglayang = new LayangLayang(0, 0, 0, 0);
+                for (String input: layanglayang.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "Lingkaran":
+                Lingkaran lingkaran = new Lingkaran(0);
+                for (String input: lingkaran.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            default:
+                System.out.println("Error");
+                
         }
-        // Create and add input fields
-//        addInputField("Sisi Atas (a)");
-//        addInputField("Sisi Bawah (b)");
-//        addInputField("Tinggi (t)");
-//        addInputField("Sisi Miring Kiri");
-//        addInputField("Sisi Miring Kanan");
     }
     
     private JTextField addInputField(String label) {
@@ -100,40 +161,96 @@ public class Input extends JFrame {
     }
     
     private void hitungBangun() {
-        switch (bangunType) {
-            case "Trapesium":
-                hitungTrapesium();
-                break;
-            default:
-                JOptionPane.showMessageDialog(this,
+        if (Arrays.asList(bangun2D).contains(this.bangunType) || Arrays.asList(bangun3D).contains(this.bangunType)) {
+            hitungInput();
+        }
+        else {
+            JOptionPane.showMessageDialog(this,
                     "Perhitungan untuk " + bangunType + " belum diimplementasikan",
                     "Informasi",
                     JOptionPane.INFORMATION_MESSAGE);
-                break;
         }
     }
     
-    private void hitungTrapesium() {
+    private void hitungInput() {
         try {
             
             Component[] components = inputPanel.getComponents();
-            List<double> inputs = new ArrayList<>();
-            
-            int valueIndex = 0;
+            List<Double> inputs = new ArrayList<>();
             
             for (Component comp : components) {
                 if (comp instanceof JTextField) {
-                    inputs.add(Double.parseDouble((JTextField) comp).getText());
-                    values[valueIndex++] = Double.parseDouble(((JTextField) comp).getText());
+                    inputs.add(Double.parseDouble(((JTextField) comp).getText()));
                 }
             }
             
-            
-            double luas = ((values[0] + values[1]) * values[2]) / 2; // (a + b) * t / 2
-            double keliling = values[0] + values[1] + values[3] + values[4]; // a + b + sisi miring kiri + sisi miring kanan
-            
-            
-            showResults(luas, keliling);
+//        String[] bangun2D = {
+//            "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
+//            "BelahKetupat", "LayangLayang", "Lingkaran", "Tembereng", "Juring"
+//        };
+            if (bangunDatar instanceof Segitiga) {
+                Segitiga segitiga = (Segitiga) bangunDatar;
+                segitiga.sisiSatu = inputs.get(0);
+                segitiga.sisiDua = inputs.get(1);
+                segitiga.sisiAlas = inputs.get(2);
+                segitiga.tinggi = inputs.get(3);
+                
+                showResults(segitiga);
+            }
+            else if (bangunDatar instanceof Persegi) {
+                Persegi persegi = (Persegi) bangunDatar;
+                persegi.sisi = inputs.get(0);
+                
+                showResults(persegi);
+            }
+            else if (bangunDatar instanceof PersegiPanjang) {
+                PersegiPanjang persegipanjang = (PersegiPanjang) bangunDatar;
+                persegipanjang.sisiPendek = inputs.get(0);
+                persegipanjang.sisiPanjang = inputs.get(1);
+                
+                showResults(persegipanjang);
+            }
+            else if (bangunDatar instanceof JajarGenjang) {
+                JajarGenjang jajargenjang = (JajarGenjang) bangunDatar;
+                jajargenjang.sisiDatar = inputs.get(0);
+                jajargenjang.sisiDatar = inputs.get(1);
+                jajargenjang.tinggi = inputs.get(2);
+
+                showResults(jajargenjang);
+            }
+            else if (bangunDatar instanceof Trapesium) {
+                Trapesium trapesium = (Trapesium) bangunDatar;
+                trapesium.sisiAtas = inputs.get(0);
+                trapesium.sisiAlas = inputs.get(1);
+                trapesium.sisiMiringSatu = inputs.get(2);
+                trapesium.sisiMiringDua = inputs.get(3);
+                trapesium.tinggi = inputs.get(4);
+                
+                showResults(trapesium);
+            }
+            else if (bangunDatar instanceof BelahKetupat) {
+                BelahKetupat belahketupat = (BelahKetupat) bangunDatar;
+                belahketupat.sisi = inputs.get(0);
+                belahketupat.diagonalSatu = inputs.get(1);
+                belahketupat.diagonalDua = inputs.get(2);
+                
+                showResults(belahketupat);
+            }
+            else if (bangunDatar instanceof LayangLayang) {
+                LayangLayang layanglayang = (LayangLayang) bangunDatar;
+                layanglayang.diagonalSatu = inputs.get(0);
+                layanglayang.diagonalDua = inputs.get(1);
+                layanglayang.sisiPendek = inputs.get(2);
+                layanglayang.sisiPanjang = inputs.get(3);
+                
+                showResults(layanglayang);
+            }
+            else if (bangunDatar instanceof Lingkaran) {
+                Lingkaran lingkaran = (Lingkaran) bangunDatar;
+                lingkaran.jariJari = inputs.get(0);
+                
+                showResults(lingkaran);
+            }
             
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
@@ -143,11 +260,8 @@ public class Input extends JFrame {
         }
     }
     
-    private void showResults(BangunDatar bangunDatar) {
-        bangunDatar.hitungLuas();
-        bangunDatar.hitungKeliling();
-        
-        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunDatar.getNama(), true);
+    private void showResults(double luas, double keliling) {
+        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunType, true);
         resultDialog.setSize(300, 200);
         resultDialog.setLocationRelativeTo(this);
         
@@ -156,8 +270,8 @@ public class Input extends JFrame {
         resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         
-        String luasStr = String.format("%.2f", bangunDatar.keliling);
-        String kelilingStr = String.format("%.2f", bangunDatar.luas);
+        String luasStr = String.format("%.2f", luas);
+        String kelilingStr = String.format("%.2f", keliling);
         
         JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
         luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
