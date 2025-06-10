@@ -1,0 +1,88 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package geometri.benda.geometri.lingkaran.bola;
+
+import geometri.benda.geometri.lingkaran.Lingkaran;
+
+/**
+ *
+ * @author farhannivta
+ */
+public class JuringBola extends Bola {
+    private double alpha;
+    private double volume;
+    private double luasPermukaan;
+    
+    public JuringBola(double alphaDerajat, double jariJari) {
+        super(jariJari);
+        
+        this.alpha = Math.toRadians(alphaDerajat);
+    }
+    
+    @Override
+     public double hitungVolume() {
+        this.volume = this.hitungVolume(jariJari, alpha);
+        return this.volume;
+    }
+     
+     public double hitungVolume(double jariJari, double alpha) {
+        return (2 * Math.PI * Math.pow(jariJari, 3) / 3) * (1 - Math.cos(alpha));
+    }
+     
+    @Override
+    public double hitungLuasPermukaan() {
+        this.luasPermukaan = this.hitungLuasPermukaan();
+        return this.luasPermukaan;
+    }
+    
+    public double hitungLuasPermukaan(double jariJari, double alpha) {
+        return this.hitungLuasPermukaanMelengkung(jariJari, alpha) + this.hitungLuasBidangSegitigaKerucut(jariJari, alpha);
+    }
+    
+    @Override
+    public String getNama() {
+        return "Juring Bola";
+    }
+
+    public double hitungLuasPermukaanMelengkung() {
+        return this.hitungLuasPermukaanMelengkung(jariJari, alpha);
+    }
+    
+    public double hitungLuasPermukaanMelengkung(double jariJari, double alpha) {
+        return 2 * Lingkaran.PI * jariJari * jariJari * (1 - Math.cos(alpha));
+    }
+
+    public double hitungLuasBidangSegitigaKerucut() {
+        return this.hitungLuasBidangSegitigaKerucut(jariJari, alpha);
+    }
+    
+    public double hitungLuasBidangSegitigaKerucut(double jariJari, double alpha) {
+        return 2 * jariJari * jariJari * alpha;
+    }
+
+    public double getAlpha() {
+        return alpha;
+    }
+
+    public void setAlpha(double alpha) {
+        this.alpha = alpha;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public double getLuasPermukaan() {
+        return luasPermukaan;
+    }
+
+    public void setLuasPermukaan(double luasPermukaan) {
+        this.luasPermukaan = luasPermukaan;
+    }
+}
