@@ -106,44 +106,44 @@ public class Input extends JFrame {
                 }
                 break;
             case "Persegi":
-                Persegi persegi = new Persegi(0);
-                for (String input: persegi.getInputs()) {
+                bangunDatar = new Persegi(0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "PersegiPanjang":
-                PersegiPanjang persegipanjang = new PersegiPanjang(0, 0);
-                for (String input: persegipanjang.getInputs()) {
+                bangunDatar = new PersegiPanjang(0, 0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "JajarGenjang":
-                JajarGenjang jajargenjang = new JajarGenjang(0, 0, 0);
-                for (String input: jajargenjang.getInputs()) {
+                bangunDatar = new JajarGenjang(0, 0, 0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "Trapesium":
-                Trapesium trapesium = new Trapesium(0, 0, 0, 0, 0);
-                for (String input: trapesium.getInputs()) {
+                bangunDatar = new Trapesium(0, 0, 0, 0, 0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "BelahKetupat":
-                BelahKetupat belahketupat = new BelahKetupat(0, 0, 0);
-                for (String input: belahketupat.getInputs()) {
+                bangunDatar = new BelahKetupat(0, 0, 0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "LayangLayang":
-                LayangLayang layanglayang = new LayangLayang(0, 0, 0, 0);
-                for (String input: layanglayang.getInputs()) {
+                bangunDatar = new LayangLayang(0, 0, 0, 0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
             case "Lingkaran":
-                Lingkaran lingkaran = new Lingkaran(0);
-                for (String input: lingkaran.getInputs()) {
+                bangunDatar = new Lingkaran(0);
+                for (String input: bangunDatar.getInputs()) {
                     addInputField(input);
                 }
                 break;
@@ -198,6 +198,7 @@ public class Input extends JFrame {
                 showResults(segitiga);
             }
             else if (bangunDatar instanceof Persegi) {
+                
                 Persegi persegi = (Persegi) bangunDatar;
                 persegi.sisi = inputs.get(0);
                 
@@ -213,7 +214,7 @@ public class Input extends JFrame {
             else if (bangunDatar instanceof JajarGenjang) {
                 JajarGenjang jajargenjang = (JajarGenjang) bangunDatar;
                 jajargenjang.sisiDatar = inputs.get(0);
-                jajargenjang.sisiDatar = inputs.get(1);
+                jajargenjang.sisiMiring = inputs.get(1);
                 jajargenjang.tinggi = inputs.get(2);
 
                 showResults(jajargenjang);
@@ -260,8 +261,11 @@ public class Input extends JFrame {
         }
     }
     
-    private void showResults(double luas, double keliling) {
-        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunType, true);
+    private void showResults(BangunDatar bangunDatar) {
+        bangunDatar.hitungLuas();
+        bangunDatar.hitungKeliling();
+        
+        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunDatar.getNama(), true);
         resultDialog.setSize(300, 200);
         resultDialog.setLocationRelativeTo(this);
         
@@ -270,8 +274,8 @@ public class Input extends JFrame {
         resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         
-        String luasStr = String.format("%.2f", luas);
-        String kelilingStr = String.format("%.2f", keliling);
+        String luasStr = String.format("%.2f", bangunDatar.getLuas());
+        String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
         
         JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
         luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));

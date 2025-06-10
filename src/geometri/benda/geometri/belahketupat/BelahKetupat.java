@@ -65,4 +65,16 @@ public class BelahKetupat extends BangunDatar implements Runnable, Inputable {
         inputs.add("diagonal dua");
         return inputs;
     }
+
+    @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
+    }
+    
+    
 }
