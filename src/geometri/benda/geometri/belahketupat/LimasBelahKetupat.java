@@ -1,6 +1,8 @@
 package geometri.benda.geometri.belahketupat;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
     private double tinggiLimas;
@@ -69,6 +71,20 @@ public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
         this.volume = volume;
     }
 
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }    
+    @Override
+    public List<String> getInputs() {
+         List<String> inputs = new ArrayList<>();
+        inputs.add("sisi");
+        inputs.add("diagonal satu");
+        inputs.add("diagonal dua");
+        return inputs;
+    }
+    
     @Override
     public String getNama() {
         return "Limas Belah Ketupat";

@@ -1,6 +1,8 @@
 package geometri.benda.geometri.segitiga;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class LimasSegitiga extends Segitiga implements BangunRuang {
@@ -92,7 +94,21 @@ public class LimasSegitiga extends Segitiga implements BangunRuang {
     public void setVolume(double volume) {
         this.volume = volume;
     }
-
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }
+    @Override
+    public List<String> getInputs() {
+            List<String> inputs = new ArrayList<>();
+            inputs.add("Sisi Satu");
+            inputs.add("Sisi Dua");
+            inputs.add("Sisi Alas");
+            inputs.add("Tinggi");
+        return inputs;
+    }
+    
     @Override
     public String getNama() {
         return "Limas Segitiga";

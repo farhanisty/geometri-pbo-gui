@@ -1,6 +1,8 @@
 package geometri.benda.geometri.segitiga;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PrismaSegitiga extends Segitiga implements BangunRuang {
     private double tinggiPrisma;
@@ -54,6 +56,21 @@ public class PrismaSegitiga extends Segitiga implements BangunRuang {
 
     public void setLuasPermukaan(double luasPermukaan) {
         this.luasPermukaan = luasPermukaan;
+    }
+    
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Satu");
+        inputs.add("Sisi Dua");
+        inputs.add("Sisi Alas");
+        inputs.add("Tinggi");
+        return inputs;
     }
 
     @Override

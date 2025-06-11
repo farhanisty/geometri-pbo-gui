@@ -5,6 +5,8 @@
 package geometri.benda.geometri.lingkaran.bola;
 
 import geometri.benda.geometri.lingkaran.Lingkaran;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -39,6 +41,20 @@ public class JuringBola extends Bola {
     
     public double hitungLuasPermukaan(double jariJari, double alpha) {
         return this.hitungLuasPermukaanMelengkung(jariJari, alpha) + this.hitungLuasBidangSegitigaKerucut(jariJari, alpha);
+    }
+    
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    } 
+    
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Jari-jari");
+        inputs.add("Sudut");
+        return inputs;
     }
     
     @Override

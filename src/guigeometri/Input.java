@@ -147,6 +147,18 @@ public class Input extends JFrame {
                     addInputField(input);
                 }
                 break;
+            case "Tembereng":
+                bangunDatar = new TemberengLingkaran(0, 0);
+                for (String input: bangunDatar.getInputs()) {
+                    addInputField(input);
+                }
+                break;
+            case "Juring":
+                bangunDatar = new JuringLingkaran(0, 0);
+                for (String input: bangunDatar.getInputs()) {
+                    addInputField(input);
+                }
+                break;
             default:
                 System.out.println("Error");
                 
@@ -183,6 +195,8 @@ public class Input extends JFrame {
                     inputs.add(Double.parseDouble(((JTextField) comp).getText()));
                 }
             }
+            
+            
             
 //        String[] bangun2D = {
 //            "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
@@ -246,6 +260,21 @@ public class Input extends JFrame {
                 
                 showResults(layanglayang);
             }
+            
+            else if (bangunDatar instanceof TemberengLingkaran) {
+                TemberengLingkaran tembereng = (TemberengLingkaran) bangunDatar;
+                tembereng.jariJari = inputs.get(0);
+                tembereng.sudutTheta = inputs.get(1);
+                
+                showResults(tembereng);
+            }
+            else if (bangunDatar instanceof JuringLingkaran) {
+                JuringLingkaran juring = (JuringLingkaran) bangunDatar;
+                juring.jariJari = inputs.get(0);
+                juring.sudut = inputs.get(1);
+                
+                showResults(juring);
+            }
             else if (bangunDatar instanceof Lingkaran) {
                 Lingkaran lingkaran = (Lingkaran) bangunDatar;
                 lingkaran.jariJari = inputs.get(0);
@@ -264,39 +293,41 @@ public class Input extends JFrame {
     private void showResults(BangunDatar bangunDatar) {
         bangunDatar.hitungLuas();
         bangunDatar.hitungKeliling();
+//        
+//        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunDatar.getNama(), true);
+//        resultDialog.setSize(300, 200);
+//        resultDialog.setLocationRelativeTo(this);
+//        
+//        JPanel resultPanel = new JPanel();
+//        resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
+//        resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+//        
+//        
+//        String luasStr = String.format("%.2f", bangunDatar.getLuas());
+//        String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
+//        
+//        JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
+//        luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+//        luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        
+//        JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
+//        kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+//        kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        
+//        JButton tutupButton = new JButton("Tutup");
+//        tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        tutupButton.addActionListener(e -> resultDialog.dispose());
+//        
+//        resultPanel.add(luasLabel);
+//        resultPanel.add(Box.createVerticalStrut(10));
+//        resultPanel.add(kelilingLabel);
+//        resultPanel.add(Box.createVerticalStrut(20));
+//        resultPanel.add(tutupButton);
+//        
+//        resultDialog.add(resultPanel);
+//        resultDialog.setVisible(true);
         
-        JDialog resultDialog = new JDialog(this, "Hasil Perhitungan " + bangunDatar.getNama(), true);
-        resultDialog.setSize(300, 200);
-        resultDialog.setLocationRelativeTo(this);
-        
-        JPanel resultPanel = new JPanel();
-        resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
-        resultPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        
-        
-        String luasStr = String.format("%.2f", bangunDatar.getLuas());
-        String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
-        
-        JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
-        luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
-        kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JButton tutupButton = new JButton("Tutup");
-        tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tutupButton.addActionListener(e -> resultDialog.dispose());
-        
-        resultPanel.add(luasLabel);
-        resultPanel.add(Box.createVerticalStrut(10));
-        resultPanel.add(kelilingLabel);
-        resultPanel.add(Box.createVerticalStrut(20));
-        resultPanel.add(tutupButton);
-        
-        resultDialog.add(resultPanel);
-        resultDialog.setVisible(true);
+         new Result(this, "Hasil Perhitungan " + bangunDatar.getNama(), bangunDatar).setVisible(true);
     }
     
     public void showMessage(String message) {
