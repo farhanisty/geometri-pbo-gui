@@ -14,15 +14,17 @@ public class Result extends JDialog {
     
     public Result(JFrame parent, String title, BangunDatar bangunDatar) {
         super(parent, title, true);
-        this.bangunDatar = bangunDatar;
-        setupDialog();
-    }
-    
-    private void setupDialog() {
+        
         setSize(800, 400);  // Make dialog wider to accommodate image
         setLocationRelativeTo(getParent());
         setResizable(false);
-        
+        this.bangunDatar = bangunDatar;
+        SwingUtilities.invokeLater(() -> {
+            setupDialog();
+        });
+    }
+    
+    private void setupDialog() {
         // Main panel with BorderLayout
         JPanel mainPanel = new JPanel(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -31,43 +33,58 @@ public class Result extends JDialog {
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
         
-        if(bangunDatar instanceof BangunRuang bangunRuang) {
-            String luasPermukaan = String.format("%.2f", bangunRuang.hitungLuasPermukaan());
-            String volume = String.format("%.2f", bangunRuang.hitungVolume());
-            
-            JLabel luasPermukaanLabel = new JLabel("Luas Permukaan: " + luasPermukaan + " satuan persegi");
-            luasPermukaanLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            luasPermukaanLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                bangunDatar.run();
+                return null;
+            }
 
-            JLabel volumeLabel = new JLabel("Volume: " + volume + " kubik");
-            volumeLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            volumeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            
-            resultPanel.add(luasPermukaanLabel);
-            resultPanel.add(volumeLabel);
-        } else {
-            String luasStr = String.format("%.2f", bangunDatar.getLuas());
-            String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
+            @Override
+            protected void done() {
+                if(bangunDatar instanceof BangunRuang bangunRuang) {
+                    String luasPermukaan = String.format("%.2f", bangunRuang.hitungLuasPermukaan());
+                    String volume = String.format("%.2f", bangunRuang.hitungVolume());
 
-            JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
-            luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    JLabel luasPermukaanLabel = new JLabel("Luas Permukaan: " + luasPermukaan + " satuan persegi");
+                    luasPermukaanLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+                    luasPermukaanLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
-            kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            resultPanel.add(luasLabel);
-            resultPanel.add(kelilingLabel);
-        }
+                    JLabel volumeLabel = new JLabel("Volume: " + volume + " kubik");
+                    volumeLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+                    volumeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                    resultPanel.add(luasPermukaanLabel);
+                    resultPanel.add(volumeLabel);
+                } else {
+                    String luasStr = String.format("%.2f", bangunDatar.getLuas());
+                    String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
+
+                    JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
+                    luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+                    luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+                    JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
+                    kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+                    kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                    resultPanel.add(luasLabel);
+                    resultPanel.add(kelilingLabel);
+                }
+                
+                JButton tutupButton = new JButton("Tutup");
+                tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+                tutupButton.addActionListener(e -> dispose());
+                
+                resultPanel.add(Box.createVerticalStrut(10));
+                resultPanel.add(Box.createVerticalStrut(20));
+                resultPanel.add(tutupButton);
+                
+                mainPanel.revalidate();
+                mainPanel.repaint();
+            }
+        };
         
-        JButton tutupButton = new JButton("Tutup");
-        tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tutupButton.addActionListener(e -> dispose());
-        
-        
-        resultPanel.add(Box.createVerticalStrut(10));
-        resultPanel.add(Box.createVerticalStrut(20));
-        resultPanel.add(tutupButton);
+        worker.execute();
         
         // Right panel for image
         JPanel imagePanel = new JPanel(new BorderLayout());
