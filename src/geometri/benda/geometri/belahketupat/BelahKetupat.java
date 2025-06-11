@@ -5,9 +5,12 @@
 package geometri.benda.geometri.belahketupat;
 
 import geometri.benda.geometri.BangunDatar;
+import geometri.benda.geometri.lingkaran.Lingkaran;
 import guigeometri.Inputable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -53,6 +56,11 @@ public class BelahKetupat extends BangunDatar implements Runnable, Inputable {
 
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(BelahKetupat.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuas();
         this.hitungKeliling();
     }

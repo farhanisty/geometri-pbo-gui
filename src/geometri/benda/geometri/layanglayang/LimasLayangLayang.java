@@ -1,8 +1,11 @@
 package geometri.benda.geometri.layanglayang;
 
 import geometri.benda.geometri.BangunRuang;
+import geometri.benda.geometri.belahketupat.BelahKetupat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LimasLayangLayang extends LayangLayang implements BangunRuang {
     private double tinggiLimas;
@@ -86,6 +89,11 @@ public class LimasLayangLayang extends LayangLayang implements BangunRuang {
     }
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LimasLayangLayang.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuasPermukaan();
         this.hitungVolume();
     }

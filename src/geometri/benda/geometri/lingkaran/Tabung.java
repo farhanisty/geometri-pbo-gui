@@ -5,9 +5,12 @@
 package geometri.benda.geometri.lingkaran;
 
 import geometri.benda.geometri.BangunRuang;
+import geometri.benda.geometri.belahketupat.BelahKetupat;
 import geometri.benda.geometri.lingkaran.Lingkaran;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,6 +51,11 @@ public class Tabung extends Lingkaran implements BangunRuang{
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Tabung.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuasPermukaan();
         this.hitungVolume();
     }    

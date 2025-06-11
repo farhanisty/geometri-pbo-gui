@@ -7,6 +7,9 @@ package geometri.benda.geometri.lingkaran;
 import java.util.ArrayList;
 import java.util.List;
 import geometri.benda.geometri.BangunDatar;
+import geometri.benda.geometri.belahketupat.BelahKetupat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author farhannivta
@@ -61,6 +64,11 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
         
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TemberengLingkaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuas();
         this.hitungKeliling();
     }

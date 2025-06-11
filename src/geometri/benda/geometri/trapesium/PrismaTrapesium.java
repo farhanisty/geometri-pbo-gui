@@ -3,6 +3,8 @@ package geometri.benda.geometri.trapesium;
 import geometri.benda.geometri.BangunRuang;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PrismaTrapesium extends Trapesium implements BangunRuang {
     private double tinggiPrisma;
@@ -32,6 +34,17 @@ public class PrismaTrapesium extends Trapesium implements BangunRuang {
     
     public double hitungLuasPermukaan(double tinggiPrisma, double sisiAtas, double sisiAlas, double sisiMiringSatu, double sisiMiringDua, double tinggi) {
         return 2 * super.hitungLuas(sisiAlas, sisiAtas, tinggi) + super.hitungKeliling(sisiAtas, sisiAlas, sisiMiringSatu, sisiMiringDua) * tinggiPrisma;
+    }
+    
+        @Override
+    public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PrismaTrapesium.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
     }
 
     public double getTinggiPrisma() {
