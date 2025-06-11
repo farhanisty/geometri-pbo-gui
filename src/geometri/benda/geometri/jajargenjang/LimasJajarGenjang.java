@@ -98,6 +98,7 @@ public class LimasJajarGenjang extends JajarGenjang implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
         inputs.add("Sisi Datar");
         inputs.add("Sisi Miring");
         inputs.add("Tinggi");
