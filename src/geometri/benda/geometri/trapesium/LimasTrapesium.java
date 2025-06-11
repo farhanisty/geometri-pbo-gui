@@ -131,6 +131,7 @@ public class LimasTrapesium extends Trapesium implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
         inputs.add("Sisi Atas");
         inputs.add("Sisi Alas");
         inputs.add("Sisi Miring Satu");
