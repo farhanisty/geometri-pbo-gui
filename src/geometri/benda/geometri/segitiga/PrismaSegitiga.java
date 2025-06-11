@@ -29,7 +29,7 @@ public class PrismaSegitiga extends Segitiga implements BangunRuang {
 
     @Override
     public double hitungLuasPermukaan() {
-        this.luasPermukaan = this.hitungLuasPermukaan(tinggiPrisma, sisiSatu, sisiDua, sisiAlas, tinggiPrisma);
+        this.luasPermukaan = this.hitungLuasPermukaan(tinggiPrisma, sisiSatu, sisiDua, sisiAlas, tinggi);
         return this.luasPermukaan;
     }
     
