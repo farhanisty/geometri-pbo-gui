@@ -1,6 +1,8 @@
 package geometri.benda.geometri.trapesium;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LimasTrapesium extends Trapesium implements BangunRuang {
     private double tinggiLimas;
@@ -110,5 +112,20 @@ public class LimasTrapesium extends Trapesium implements BangunRuang {
     @Override
     public String getNama() {
         return "Limas Trapesium";
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Atas");
+        inputs.add("Sisi Alas");
+        inputs.add("Sisi Miring Satu");
+        inputs.add("Sisi Miring Dua");
+        inputs.add("Tinggi");
+        inputs.add("Tinggi Segitiga Sisi Atas");
+        inputs.add("Tinggi Segitiga Sisi Alas");
+        inputs.add("Tinggi Segitiga Sisi Miring Satu");
+        inputs.add("Tinggi Segitiga Sisi Miring Dua");
+        return inputs;
     }
 }

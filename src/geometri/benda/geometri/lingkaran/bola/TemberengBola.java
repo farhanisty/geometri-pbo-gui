@@ -68,8 +68,8 @@ public class TemberengBola extends Bola {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("Jari-jari");
-        inputs.add("Sudut Theta");
+        inputs.add("Tinggi");
+        inputs.add("Jari-jari"); 
         return inputs;
     }
     

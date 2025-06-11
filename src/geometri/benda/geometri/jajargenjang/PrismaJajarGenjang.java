@@ -66,6 +66,7 @@ public class PrismaJajarGenjang extends JajarGenjang implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Prisma");
         inputs.add("Sisi Datar");
         inputs.add("Sisi Miring");
         inputs.add("Tinggi");

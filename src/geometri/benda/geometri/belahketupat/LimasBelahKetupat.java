@@ -78,10 +78,12 @@ public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
     }    
     @Override
     public List<String> getInputs() {
-         List<String> inputs = new ArrayList<>();
-        inputs.add("sisi");
-        inputs.add("diagonal satu");
-        inputs.add("diagonal dua");
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
+        inputs.add("Sisi");
+        inputs.add("Diagonal Satu");
+        inputs.add("Diagonal Dua");
+        inputs.add("Tinggi Segitiga Sisi");
         return inputs;
     }
     

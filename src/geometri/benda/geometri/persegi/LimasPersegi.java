@@ -73,11 +73,14 @@ public class LimasPersegi extends Persegi implements BangunRuang {
     public void run() {
         this.hitungLuasPermukaan();
         this.hitungVolume();
-    }  
+    }
+    
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
         inputs.add("sisi");
+        inputs.add("Tinggi Segitiga");
         return inputs;
     }
 

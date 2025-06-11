@@ -66,7 +66,8 @@ public class PrismaPersegi extends Persegi implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("sisi");
+        inputs.add("Tinggi Prisma");
+        inputs.add("Sisi");
         return inputs;
     }
 

@@ -66,10 +66,11 @@ public class PrismaSegitiga extends Segitiga implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Prisma");
         inputs.add("Sisi Satu");
         inputs.add("Sisi Dua");
         inputs.add("Sisi Alas");
-        inputs.add("Tinggi");
+        inputs.add("Tinggi Segitiga");
         return inputs;
     }
 

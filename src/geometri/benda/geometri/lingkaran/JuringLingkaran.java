@@ -67,8 +67,8 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("Jari-jari");
         inputs.add("Sudut");
+        inputs.add("Jari-Jari");
         return inputs;
     }
 

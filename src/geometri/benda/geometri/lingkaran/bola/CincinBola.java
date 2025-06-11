@@ -64,6 +64,8 @@ public class CincinBola extends Bola {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("H1 (Jarak Bidang Potong Bawah)");
+        inputs.add("H2 (Jarak Bidang Potong Atas)");
         inputs.add("Jari Jari");
         return inputs;
     }    

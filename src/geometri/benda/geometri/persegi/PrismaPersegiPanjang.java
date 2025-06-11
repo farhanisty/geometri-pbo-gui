@@ -66,6 +66,7 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang 
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Prisma");
         inputs.add("Sisi Pendek");
         inputs.add("Sisi Panjang");
         return inputs;

@@ -42,6 +42,7 @@ public class Kerucut extends Lingkaran implements BangunRuang{
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Kerucut");
         inputs.add("Jari Jari");
         return inputs;
     }

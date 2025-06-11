@@ -40,7 +40,9 @@ public class KerucutTerpancung extends Lingkaran implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("Jari Jari");
+        inputs.add("Tinggi");
+        inputs.add("Jari Jari Kecil");
+        inputs.add("Jari Jari Besar");
         return inputs;
     }
     
