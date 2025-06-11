@@ -21,6 +21,7 @@ public class KerucutTerpancung extends Lingkaran implements BangunRuang {
     public KerucutTerpancung(double tinggi, double jariJariKecil, double jariJariBesar) {
         super(jariJariBesar);
         this.jariJariKecil = jariJariKecil;
+        this.tinggi = tinggi;
     }
     
     @Override
@@ -61,6 +62,22 @@ public class KerucutTerpancung extends Lingkaran implements BangunRuang {
         double luasAlasBesar = Math.PI * jariJari * jariJari;
         double luasAlasKecil = Math.PI * jariJariKecil * jariJariKecil;
         return luasSelimut + luasAlasBesar + luasAlasKecil;
+    }
+
+    public double getJariJariKecil() {
+        return jariJariKecil;
+    }
+
+    public void setJariJariKecil(double jariJariKecil) {
+        this.jariJariKecil = jariJariKecil;
+    }
+
+    public double getTinggi() {
+        return tinggi;
+    }
+
+    public void setTinggi(double tinggi) {
+        this.tinggi = tinggi;
     }
     
     @Override
