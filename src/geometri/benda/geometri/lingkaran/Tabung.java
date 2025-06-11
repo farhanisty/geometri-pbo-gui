@@ -41,6 +41,7 @@ public class Tabung extends Lingkaran implements BangunRuang{
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Tabung");
         inputs.add("Jari Jari");
         return inputs;
     }

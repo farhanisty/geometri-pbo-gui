@@ -91,8 +91,11 @@ public class LimasPersegiPanjang extends PersegiPanjang implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
         inputs.add("Sisi Pendek");
         inputs.add("Sisi Panjang");
+        inputs.add("Tinggi Segitiga Pendek");
+        inputs.add("Tinggi Segitiga Panjang");
         return inputs;
     }
 

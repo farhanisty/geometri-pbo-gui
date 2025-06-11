@@ -65,6 +65,7 @@ public class PrismaLayangLayang extends LayangLayang implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Prisma");
         inputs.add("Diagonal Satu");
         inputs.add("Diagonal Dua");
         inputs.add("Sisi Pendek");

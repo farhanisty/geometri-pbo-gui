@@ -92,10 +92,13 @@ public class LimasLayangLayang extends LayangLayang implements BangunRuang {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
+        inputs.add("Tinggi Limas");
         inputs.add("Diagonal Satu");
         inputs.add("Diagonal Dua");
         inputs.add("Sisi Pendek");
         inputs.add("Sisi Panjang");
+        inputs.add("Tinggi Segitiga Sisi Pendek");
+        inputs.add("Tinggi Segitiga Sisi Panjang");
         return inputs;
     }
     

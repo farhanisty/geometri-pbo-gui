@@ -93,6 +93,8 @@ public class LimasJajarGenjang extends JajarGenjang implements BangunRuang {
         inputs.add("Sisi Datar");
         inputs.add("Sisi Miring");
         inputs.add("Tinggi");
+        inputs.add("Tinggi Segitiga Sisi Datar");
+        inputs.add("Tinggi Segitiga Sisi Miring");
         return inputs;
     }    
     

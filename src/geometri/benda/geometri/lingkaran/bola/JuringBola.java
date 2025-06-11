@@ -52,8 +52,8 @@ public class JuringBola extends Bola {
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("Jari-jari");
-        inputs.add("Sudut");
+        inputs.add("Sudut (Derajat)");
+        inputs.add("Jari Jari");
         return inputs;
     }
     

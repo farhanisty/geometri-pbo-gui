@@ -102,10 +102,14 @@ public class LimasSegitiga extends Segitiga implements BangunRuang {
     @Override
     public List<String> getInputs() {
             List<String> inputs = new ArrayList<>();
+            inputs.add("Tinggi Limas");
             inputs.add("Sisi Satu");
             inputs.add("Sisi Dua");
             inputs.add("Sisi Alas");
             inputs.add("Tinggi");
+            inputs.add("Tinggi Segitiga Satu");
+            inputs.add("Tinggi Segitiga Dua");
+            inputs.add("Tinggi Segitiga Alas");
         return inputs;
     }
     
