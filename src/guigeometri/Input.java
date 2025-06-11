@@ -191,7 +191,10 @@ public class Input extends JFrame {
         try {
             for (Component comp : components) {
                 if (comp instanceof JTextField) {
-                    inputs.add(Double.parseDouble(((JTextField) comp).getText()));
+                    String rawInput = ((JTextField) comp).getText();
+                    Double santizedInput = this.validateInput(rawInput);
+                    
+                    inputs.add(santizedInput);
                 }
             }
         } catch (NumberFormatException ex) {
@@ -199,83 +202,91 @@ public class Input extends JFrame {
                 "Mohon masukkan angka yang valid untuk semua field.",
                 "Error",
                 JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (IllegalArgumentException ex) {
+            this.showMessage("Angka tidak boleh negatif", "Error",  JOptionPane.ERROR_MESSAGE);
+            return;
         }
-            
-            
-            
-//        String[] bangun2D = {
-//            "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
-//            "BelahKetupat", "LayangLayang", "Lingkaran", "Tembereng", "Juring"
-//        };
-            if (bangunDatar instanceof Segitiga segitiga) {
-                segitiga.sisiSatu = inputs.get(0);
-                segitiga.sisiDua = inputs.get(1);
-                segitiga.sisiAlas = inputs.get(2);
-                segitiga.tinggi = inputs.get(3);
-                
-                showResults(segitiga);
-            }
-            else if (bangunDatar instanceof Persegi persegi) {
-                
-                persegi.sisi = inputs.get(0);
-                
-                showResults(persegi);
-            }
-            else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
-                persegipanjang.sisiPendek = inputs.get(0);
-                persegipanjang.sisiPanjang = inputs.get(1);
-                
-                showResults(persegipanjang);
-            }
-            else if (bangunDatar instanceof JajarGenjang jajargenjang) {
-                jajargenjang.sisiDatar = inputs.get(0);
-                jajargenjang.sisiMiring = inputs.get(1);
-                jajargenjang.tinggi = inputs.get(2);
+        
+        if (bangunDatar instanceof Segitiga segitiga) {
+            segitiga.sisiSatu = inputs.get(0);
+            segitiga.sisiDua = inputs.get(1);
+            segitiga.sisiAlas = inputs.get(2);
+            segitiga.tinggi = inputs.get(3);
 
-                showResults(jajargenjang);
-            }
-            else if (bangunDatar instanceof Trapesium trapesium) {
-                trapesium.sisiAtas = inputs.get(0);
-                trapesium.sisiAlas = inputs.get(1);
-                trapesium.sisiMiringSatu = inputs.get(2);
-                trapesium.sisiMiringDua = inputs.get(3);
-                trapesium.tinggi = inputs.get(4);
-                
-                showResults(trapesium);
-            }
-            else if (bangunDatar instanceof BelahKetupat belahketupat) {
-                belahketupat.sisi = inputs.get(0);
-                belahketupat.diagonalSatu = inputs.get(1);
-                belahketupat.diagonalDua = inputs.get(2);
-                
-                showResults(belahketupat);
-            }
-            else if (bangunDatar instanceof LayangLayang layanglayang) {
-                layanglayang.diagonalSatu = inputs.get(0);
-                layanglayang.diagonalDua = inputs.get(1);
-                layanglayang.sisiPendek = inputs.get(2);
-                layanglayang.sisiPanjang = inputs.get(3);
-                
-                showResults(layanglayang);
-            }
-            
-            else if (bangunDatar instanceof TemberengLingkaran tembereng) {
-                tembereng.jariJari = inputs.get(0);
-                tembereng.sudutTheta = inputs.get(1);
-                
-                showResults(tembereng);
-            }
-            else if (bangunDatar instanceof JuringLingkaran juring) {
-                juring.jariJari = inputs.get(0);
-                juring.sudut = inputs.get(1);
-                
-                showResults(juring);
-            }
-            else if (bangunDatar instanceof Lingkaran lingkaran) {
-                lingkaran.jariJari = inputs.get(0);
-                
-                showResults(lingkaran);
-            }
+            showResults(segitiga);
+        }
+        else if (bangunDatar instanceof Persegi persegi) {
+
+            persegi.sisi = inputs.get(0);
+
+            showResults(persegi);
+        }
+        else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
+            persegipanjang.sisiPendek = inputs.get(0);
+            persegipanjang.sisiPanjang = inputs.get(1);
+
+            showResults(persegipanjang);
+        }
+        else if (bangunDatar instanceof JajarGenjang jajargenjang) {
+            jajargenjang.sisiDatar = inputs.get(0);
+            jajargenjang.sisiMiring = inputs.get(1);
+            jajargenjang.tinggi = inputs.get(2);
+
+            showResults(jajargenjang);
+        }
+        else if (bangunDatar instanceof Trapesium trapesium) {
+            trapesium.sisiAtas = inputs.get(0);
+            trapesium.sisiAlas = inputs.get(1);
+            trapesium.sisiMiringSatu = inputs.get(2);
+            trapesium.sisiMiringDua = inputs.get(3);
+            trapesium.tinggi = inputs.get(4);
+
+            showResults(trapesium);
+        }
+        else if (bangunDatar instanceof BelahKetupat belahketupat) {
+            belahketupat.sisi = inputs.get(0);
+            belahketupat.diagonalSatu = inputs.get(1);
+            belahketupat.diagonalDua = inputs.get(2);
+
+            showResults(belahketupat);
+        }
+        else if (bangunDatar instanceof LayangLayang layanglayang) {
+            layanglayang.diagonalSatu = inputs.get(0);
+            layanglayang.diagonalDua = inputs.get(1);
+            layanglayang.sisiPendek = inputs.get(2);
+            layanglayang.sisiPanjang = inputs.get(3);
+
+            showResults(layanglayang);
+        }
+
+        else if (bangunDatar instanceof TemberengLingkaran tembereng) {
+            tembereng.jariJari = inputs.get(0);
+            tembereng.sudutTheta = inputs.get(1);
+
+            showResults(tembereng);
+        }
+        else if (bangunDatar instanceof JuringLingkaran juring) {
+            juring.jariJari = inputs.get(0);
+            juring.sudut = inputs.get(1);
+
+            showResults(juring);
+        }
+        else if (bangunDatar instanceof Lingkaran lingkaran) {
+            lingkaran.jariJari = inputs.get(0);
+
+            showResults(lingkaran);
+        }
+    }
+    
+    private double validateInput(String input) throws IllegalArgumentException, NumberFormatException {
+        Double rawInput = Double.valueOf(input);
+        
+        if(rawInput < 0) {
+            throw new IllegalArgumentException("Input must be positive number");
+        }
+        
+        return rawInput;
     }
     
     private void showResults(BangunDatar bangunDatar) {
@@ -320,6 +331,10 @@ public class Input extends JFrame {
     
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
+    }
+    
+    public void showMessage(String message, String title, int option) {
+        JOptionPane.showMessageDialog(this, message, title, option);
     }
     
     public static void main(String[] args) {
