@@ -15,7 +15,7 @@ public class Result extends JDialog {
     private Timer dotTimer;
     
     public Result(JFrame parent, String title, BangunDatar bangunDatar) {
-        super(parent, title, true);
+        super(parent, title, false);
         this.bangunDatar = bangunDatar;
         
         setSize(800, 400);  // Make dialog wider to accommodate image
