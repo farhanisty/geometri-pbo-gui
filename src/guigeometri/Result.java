@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import geometri.benda.geometri.BangunDatar;
+import geometri.benda.geometri.BangunRuang;
 
 public class Result extends JDialog {
     private BangunDatar bangunDatar;
@@ -30,24 +31,41 @@ public class Result extends JDialog {
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
         
-        String luasStr = String.format("%.2f", bangunDatar.getLuas());
-        String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
-        
-        JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
-        luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
-        kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        if(bangunDatar instanceof BangunRuang bangunRuang) {
+            String luasPermukaan = String.format("%.2f", bangunRuang.hitungLuasPermukaan());
+            String volume = String.format("%.2f", bangunRuang.hitungVolume());
+            
+            JLabel luasPermukaanLabel = new JLabel("Luas Permukaan: " + luasPermukaan + " satuan persegi");
+            luasPermukaanLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            luasPermukaanLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JLabel volumeLabel = new JLabel("Volume: " + volume + " kubik");
+            volumeLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            volumeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            
+            resultPanel.add(luasPermukaanLabel);
+            resultPanel.add(volumeLabel);
+        } else {
+            String luasStr = String.format("%.2f", bangunDatar.getLuas());
+            String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
+
+            JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
+            luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+            JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
+            kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+            kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+            resultPanel.add(luasLabel);
+            resultPanel.add(kelilingLabel);
+        }
         
         JButton tutupButton = new JButton("Tutup");
         tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         tutupButton.addActionListener(e -> dispose());
         
-        resultPanel.add(luasLabel);
+        
         resultPanel.add(Box.createVerticalStrut(10));
-        resultPanel.add(kelilingLabel);
         resultPanel.add(Box.createVerticalStrut(20));
         resultPanel.add(tutupButton);
         

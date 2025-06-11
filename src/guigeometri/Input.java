@@ -153,7 +153,7 @@ public class Input extends JFrame {
                 bangunDatar = new LimasSegitiga(0,0,0,0,0,0,0,0);
                 break;
             case "PrismaPersegi":
-                bangunDatar = new PrismaPersegi(0,0);
+                bangunDatar = new PrismaPersegi(0);
                 break;
             case "LimasPersegi":
                 bangunDatar = new LimasPersegi(0,0,0);
@@ -338,8 +338,7 @@ public class Input extends JFrame {
             
             showResults(limasSegitiga);
         } else if(bangunDatar instanceof PrismaPersegi prismaPersegi) {
-            prismaPersegi.setTinggiPrisma(inputs.get(0));
-            prismaPersegi.sisi = inputs.get(1);
+            prismaPersegi.sisi = inputs.get(0);
         } else if(bangunDatar instanceof LimasPersegi limasPersegi) {
             limasPersegi.setTinggiLimas(inputs.get(0));
             limasPersegi.sisi = inputs.get(1);
