@@ -62,7 +62,12 @@ public class Tabung extends Lingkaran implements BangunRuang{
 
     @Override
     public double hitungLuasPermukaan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.luasPermukaaan = this.hitungLuasPermukaan(tinggiTabung, jariJari);
+        return this.luasPermukaaan;
+    }
+    
+    public double hitungLuasPermukaan(double tinggiTabung, double jariJari) {
+        return super.hitungLuas(jariJari) * 2 + super.hitungKeliling(jariJari) * tinggiTabung;
     }
 
     public double getTinggiTabung() {
