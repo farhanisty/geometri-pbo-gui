@@ -6,6 +6,8 @@ package geometri.benda.geometri.lingkaran.bola;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -61,6 +63,11 @@ public class TemberengBola extends Bola {
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TemberengBola.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuasPermukaan();
         this.hitungVolume();
     }
