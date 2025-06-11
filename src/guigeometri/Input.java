@@ -167,7 +167,7 @@ public class Input extends JFrame {
             case "LimasPersegiPanjang":
                 bangunDatar = new LimasPersegiPanjang(0,0,0,0,0);
                 break;
-            case "PrisamJajaranGenjang":
+            case "PrismaJajaranGenjang":
                 bangunDatar = new PrismaJajarGenjang(0,0,0,0);
                 break;
             case "LimasJajaranGenjang":
