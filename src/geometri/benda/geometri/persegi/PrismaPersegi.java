@@ -5,41 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrismaPersegi extends Persegi implements BangunRuang {
-    private double tinggiPrisma;
     private double luasPermukaan;
     private double volume;
 
-    public PrismaPersegi(double tinggiPrisma, double sisi) {
+    public PrismaPersegi(double sisi) {
         super(sisi);
-        this.tinggiPrisma = tinggiPrisma;
     }
     
     @Override
     public double hitungVolume() {
-        this.volume = this.hitungVolume(tinggiPrisma, sisi);
+        this.volume = sisi * sisi * sisi; 
         return this.volume;
-    }
-
-    public double hitungVolume(double tinggiPrisma, double sisi) {
-        return super.hitungLuas(sisi) * tinggiPrisma;
     }
 
     @Override
     public double hitungLuasPermukaan() {
-        this.luasPermukaan = this.hitungLuasPermukaan(tinggiPrisma, sisi);
+        this.luasPermukaan = 6 * super.hitungLuas(); 
         return this.luasPermukaan;
-    }
-    
-    public double hitungLuasPermukaan(double tinggiPrisma, double sisi) {
-        return 2 * super.hitungLuas(sisi) + super.hitungKeliling(sisi) * tinggiPrisma;
-    }
-
-    public double getTinggiPrisma() {
-        return tinggiPrisma;
-    }
-
-    public void setTinggiPrisma(double tinggiPrisma) {
-        this.tinggiPrisma = tinggiPrisma;
     }
 
     public double getLuasPermukaan() {
@@ -63,16 +45,16 @@ public class PrismaPersegi extends Persegi implements BangunRuang {
         this.hitungLuasPermukaan();
         this.hitungVolume();
     }   
+    
     @Override
     public List<String> getInputs() {
         List<String> inputs = new ArrayList<>();
-        inputs.add("Tinggi Prisma");
         inputs.add("Sisi");
         return inputs;
     }
 
     @Override
     public String getNama() {
-        return "Prisma Persegi";
+        return "PrismaPersegi"; 
     }
 }
