@@ -1,6 +1,7 @@
 package guigeometri;
 
 import geometri.benda.geometri.BangunDatar;
+import geometri.benda.geometri.BangunRuang;
 import geometri.benda.geometri.belahketupat.BelahKetupat;
 import geometri.benda.geometri.jajargenjang.JajarGenjang;
 import geometri.benda.geometri.jajargenjang.LimasJajarGenjang;
@@ -114,6 +115,8 @@ public class Input extends JFrame {
     
     private void createInputs() {
         inputPanel.setLayout(new GridLayout(5, 2, 10, 10));
+        
+        System.out.println(this.bangunType);
         
         switch (this.bangunType) {
             case "Segitiga":
@@ -250,137 +253,141 @@ public class Input extends JFrame {
             return;
         }
         
-        if (bangunDatar instanceof Segitiga segitiga) {
-            segitiga.sisiSatu = inputs.get(0);
-            segitiga.sisiDua = inputs.get(1);
-            segitiga.sisiAlas = inputs.get(2);
-            segitiga.tinggi = inputs.get(3);
-        }
-        else if (bangunDatar instanceof Persegi persegi) {
+        if(bangunDatar instanceof BangunRuang) {
+            if (bangunDatar instanceof PrismaSegitiga prismaSegitiga) {
+                System.out.println("haii");
+                prismaSegitiga.setTinggiPrisma(inputs.get(0));
+                prismaSegitiga.sisiSatu = inputs.get(1);
+                prismaSegitiga.sisiDua = inputs.get(2);
+                prismaSegitiga.sisiAlas = inputs.get(3);
+                prismaSegitiga.tinggi = inputs.get(4);
+            } else if(bangunDatar instanceof LimasSegitiga limasSegitiga) {
+                limasSegitiga.setTinggiLimas(inputs.get(0));
+                limasSegitiga.sisiSatu = inputs.get(1);
+                limasSegitiga.sisiDua = inputs.get(2);
+                limasSegitiga.sisiAlas = inputs.get(3);
+                limasSegitiga.tinggi = inputs.get(4);
+                limasSegitiga.setTinggiSegitigaSisiSatu(inputs.get(5));
+                limasSegitiga.setTinggiSegitigaSisiDua(inputs.get(6));
+                limasSegitiga.setTinggiSegitigaSisiAlas(inputs.get(7));
+            } else if(bangunDatar instanceof PrismaPersegi prismaPersegi) {
+                prismaPersegi.sisi = inputs.get(0);
+            } else if(bangunDatar instanceof LimasPersegi limasPersegi) {
+                limasPersegi.setTinggiLimas(inputs.get(0));
+                limasPersegi.sisi = inputs.get(1);
+                limasPersegi.setTinggiSegitiga(inputs.get(2));
+            } else if(bangunDatar instanceof PrismaPersegiPanjang prismaPersegiPanjang) {
+                prismaPersegiPanjang.setTinggiPrisma(inputs.get(0));
+                prismaPersegiPanjang.sisiPendek = inputs.get(1);
+                prismaPersegiPanjang.sisiPanjang = inputs.get(2);
+            } else if(bangunDatar instanceof LimasPersegiPanjang limasPersegiPanjang) {
+                limasPersegiPanjang.setTinggiLimas(inputs.get(0));
+                limasPersegiPanjang.sisiPendek = inputs.get(1);
+                limasPersegiPanjang.sisiPanjang = inputs.get(2);
+                limasPersegiPanjang.setTinggiSegitigaSisiPendek(inputs.get(3));
+                limasPersegiPanjang.setTinggiSegitigaSisiPanjang(inputs.get(4));
+            } else if(bangunDatar instanceof PrismaJajarGenjang prismaJajarGenjang) {
+                prismaJajarGenjang.setTinggiPrisma(inputs.get(0));
+                prismaJajarGenjang.sisiDatar = inputs.get(1);
+                prismaJajarGenjang.sisiMiring = inputs.get(2);
+                prismaJajarGenjang.tinggi = inputs.get(3);
+            } else if(bangunDatar instanceof LimasJajarGenjang limasJajarGenjang) {
+                limasJajarGenjang.setTinggiLimas(inputs.get(0));
+                limasJajarGenjang.sisiDatar = inputs.get(1);
+                limasJajarGenjang.sisiMiring = inputs.get(2);
+                limasJajarGenjang.tinggi = inputs.get(3);
+                limasJajarGenjang.setTinggiSegitigaSisiDatar(inputs.get(4));
+                limasJajarGenjang.setTinggiSegitigaSisiMiring(inputs.get(5));
+            } else if(bangunDatar instanceof PrismaTrapesium prismaTrapesium) {
+                prismaTrapesium.setTinggiPrisma(inputs.get(0));
+                prismaTrapesium.sisiAtas = inputs.get(1);
+                prismaTrapesium.sisiAlas = inputs.get(2);
+                prismaTrapesium.sisiMiringSatu = inputs.get(3);
+                prismaTrapesium.sisiMiringDua = inputs.get(4);
+                prismaTrapesium.tinggi = inputs.get(5);
+            } else if(bangunDatar instanceof LimasTrapesium limasTrapesium) {
+                limasTrapesium.setTinggiLimas(inputs.get(0));
+                limasTrapesium.sisiAtas = inputs.get(1);
+                limasTrapesium.sisiAlas = inputs.get(2);
+                limasTrapesium.sisiMiringSatu = inputs.get(3);
+                limasTrapesium.sisiMiringDua = inputs.get(4);
+                limasTrapesium.tinggi = inputs.get(5);
+                limasTrapesium.setTinggiSegitigaSisiAtas(inputs.get(6));
+                limasTrapesium.setTinggiSegitigaSisiAlas(inputs.get(7));
+                limasTrapesium.setTinggiSegitigaSisiMiringSatu(inputs.get(8));
+                limasTrapesium.setTinggiSegitigaSisiMiringDua(inputs.get(9));
+            } else if(bangunDatar instanceof Tabung tabung) {
+                tabung.setTinggiTabung(inputs.get(0));
+                tabung.jariJari = inputs.get(1);
+            } else if(bangunDatar instanceof Kerucut kerucut) {
+                kerucut.setTinggiKerucut(inputs.get(0));
+                kerucut.jariJari = inputs.get(1);
+            } else if(bangunDatar instanceof KerucutTerpancung kerucutTerpancung) {
+                kerucutTerpancung.setTinggi(inputs.get(0));
+                kerucutTerpancung.setJariJariKecil(inputs.get(1));
+                kerucutTerpancung.jariJari = inputs.get(2);
+            } else if(bangunDatar instanceof TemberengBola temberengBola) {
+                temberengBola.setTinggi(inputs.get(0));
+                temberengBola.jariJari = inputs.get(1);
+            } else if(bangunDatar instanceof JuringBola juringBola) {
+                juringBola.setAlpha(inputs.get(0));
+                juringBola.jariJari = inputs.get(1);
+            } else if(bangunDatar instanceof CincinBola cincinBola) {
+                cincinBola.setH1(inputs.get(0));
+                cincinBola.setH2(inputs.get(1));
+                cincinBola.jariJari = inputs.get(2);
+            } else if(bangunDatar instanceof Bola bola) {
+                bola.jariJari = inputs.get(0);
+            } 
+        } else {
+            if (bangunDatar instanceof Segitiga segitiga) {
+                segitiga.sisiSatu = inputs.get(0);
+                segitiga.sisiDua = inputs.get(1);
+                segitiga.sisiAlas = inputs.get(2);
+                segitiga.tinggi = inputs.get(3);
+            }
+            else if (bangunDatar instanceof Persegi persegi) {
+                persegi.sisi = inputs.get(0);
+            }
+            else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
+                persegipanjang.sisiPendek = inputs.get(0);
+                persegipanjang.sisiPanjang = inputs.get(1);
+            }
+            else if (bangunDatar instanceof JajarGenjang jajargenjang) {
+                jajargenjang.sisiDatar = inputs.get(0);
+                jajargenjang.sisiMiring = inputs.get(1);
+                jajargenjang.tinggi = inputs.get(2);
+            }
+            else if (bangunDatar instanceof Trapesium trapesium) {
+                trapesium.sisiAtas = inputs.get(0);
+                trapesium.sisiAlas = inputs.get(1);
+                trapesium.sisiMiringSatu = inputs.get(2);
+                trapesium.sisiMiringDua = inputs.get(3);
+                trapesium.tinggi = inputs.get(4);
+            }
+            else if (bangunDatar instanceof BelahKetupat belahketupat) {
+                belahketupat.sisi = inputs.get(0);
+                belahketupat.diagonalSatu = inputs.get(1);
+                belahketupat.diagonalDua = inputs.get(2);
+            }
+            else if (bangunDatar instanceof LayangLayang layanglayang) {
+                layanglayang.diagonalSatu = inputs.get(0);
+                layanglayang.diagonalDua = inputs.get(1);
+                layanglayang.sisiPendek = inputs.get(2);
+                layanglayang.sisiPanjang = inputs.get(3);
+            }
 
-            persegi.sisi = inputs.get(0);
-        }
-        else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
-            persegipanjang.sisiPendek = inputs.get(0);
-            persegipanjang.sisiPanjang = inputs.get(1);
-        }
-        else if (bangunDatar instanceof JajarGenjang jajargenjang) {
-            jajargenjang.sisiDatar = inputs.get(0);
-            jajargenjang.sisiMiring = inputs.get(1);
-            jajargenjang.tinggi = inputs.get(2);
-        }
-        else if (bangunDatar instanceof Trapesium trapesium) {
-            trapesium.sisiAtas = inputs.get(0);
-            trapesium.sisiAlas = inputs.get(1);
-            trapesium.sisiMiringSatu = inputs.get(2);
-            trapesium.sisiMiringDua = inputs.get(3);
-            trapesium.tinggi = inputs.get(4);
-        }
-        else if (bangunDatar instanceof BelahKetupat belahketupat) {
-            belahketupat.sisi = inputs.get(0);
-            belahketupat.diagonalSatu = inputs.get(1);
-            belahketupat.diagonalDua = inputs.get(2);
-        }
-        else if (bangunDatar instanceof LayangLayang layanglayang) {
-            layanglayang.diagonalSatu = inputs.get(0);
-            layanglayang.diagonalDua = inputs.get(1);
-            layanglayang.sisiPendek = inputs.get(2);
-            layanglayang.sisiPanjang = inputs.get(3);
-        }
-
-        else if (bangunDatar instanceof TemberengLingkaran tembereng) {
-            tembereng.jariJari = inputs.get(0);
-            tembereng.sudutTheta = inputs.get(1);
-        }
-        else if (bangunDatar instanceof JuringLingkaran juring) {
-            juring.jariJari = inputs.get(0);
-            juring.sudut = inputs.get(1);
-        }
-        else if (bangunDatar instanceof Lingkaran lingkaran) {
-            lingkaran.jariJari = inputs.get(0);
-        } else if (bangunDatar instanceof PrismaSegitiga prismaSegitiga) {
-            prismaSegitiga.setTinggiPrisma(inputs.get(0));
-            prismaSegitiga.sisiSatu = inputs.get(1);
-            prismaSegitiga.sisiDua = inputs.get(2);
-            prismaSegitiga.sisiAlas = inputs.get(3);
-            prismaSegitiga.tinggi = inputs.get(4);
-        } else if(bangunDatar instanceof LimasSegitiga limasSegitiga) {
-            limasSegitiga.setTinggiLimas(inputs.get(0));
-            limasSegitiga.sisiSatu = inputs.get(1);
-            limasSegitiga.sisiDua = inputs.get(2);
-            limasSegitiga.sisiAlas = inputs.get(3);
-            limasSegitiga.tinggi = inputs.get(4);
-            limasSegitiga.setTinggiSegitigaSisiSatu(inputs.get(5));
-            limasSegitiga.setTinggiSegitigaSisiDua(inputs.get(6));
-            limasSegitiga.setTinggiSegitigaSisiAlas(inputs.get(7));
-        } else if(bangunDatar instanceof PrismaPersegi prismaPersegi) {
-            prismaPersegi.sisi = inputs.get(0);
-        } else if(bangunDatar instanceof LimasPersegi limasPersegi) {
-            limasPersegi.setTinggiLimas(inputs.get(0));
-            limasPersegi.sisi = inputs.get(1);
-            limasPersegi.setTinggiSegitiga(inputs.get(2));
-        } else if(bangunDatar instanceof PrismaPersegiPanjang prismaPersegiPanjang) {
-            prismaPersegiPanjang.setTinggiPrisma(inputs.get(0));
-            prismaPersegiPanjang.sisiPendek = inputs.get(1);
-            prismaPersegiPanjang.sisiPanjang = inputs.get(2);
-        } else if(bangunDatar instanceof LimasPersegiPanjang limasPersegiPanjang) {
-            limasPersegiPanjang.setTinggiLimas(inputs.get(0));
-            limasPersegiPanjang.sisiPendek = inputs.get(1);
-            limasPersegiPanjang.sisiPanjang = inputs.get(2);
-            limasPersegiPanjang.setTinggiSegitigaSisiPendek(inputs.get(3));
-            limasPersegiPanjang.setTinggiSegitigaSisiPanjang(inputs.get(4));
-        } else if(bangunDatar instanceof PrismaJajarGenjang prismaJajarGenjang) {
-            prismaJajarGenjang.setTinggiPrisma(inputs.get(0));
-            prismaJajarGenjang.sisiDatar = inputs.get(1);
-            prismaJajarGenjang.sisiMiring = inputs.get(2);
-            prismaJajarGenjang.tinggi = inputs.get(3);
-        } else if(bangunDatar instanceof LimasJajarGenjang limasJajarGenjang) {
-            limasJajarGenjang.setTinggiLimas(inputs.get(0));
-            limasJajarGenjang.sisiDatar = inputs.get(1);
-            limasJajarGenjang.sisiMiring = inputs.get(2);
-            limasJajarGenjang.tinggi = inputs.get(3);
-            limasJajarGenjang.setTinggiSegitigaSisiDatar(inputs.get(4));
-            limasJajarGenjang.setTinggiSegitigaSisiMiring(inputs.get(5));
-        } else if(bangunDatar instanceof PrismaTrapesium prismaTrapesium) {
-            prismaTrapesium.setTinggiPrisma(inputs.get(0));
-            prismaTrapesium.sisiAtas = inputs.get(1);
-            prismaTrapesium.sisiAlas = inputs.get(2);
-            prismaTrapesium.sisiMiringSatu = inputs.get(3);
-            prismaTrapesium.sisiMiringDua = inputs.get(4);
-            prismaTrapesium.tinggi = inputs.get(5);
-        } else if(bangunDatar instanceof LimasTrapesium limasTrapesium) {
-            limasTrapesium.setTinggiLimas(inputs.get(0));
-            limasTrapesium.sisiAtas = inputs.get(1);
-            limasTrapesium.sisiAlas = inputs.get(2);
-            limasTrapesium.sisiMiringSatu = inputs.get(3);
-            limasTrapesium.sisiMiringDua = inputs.get(4);
-            limasTrapesium.tinggi = inputs.get(5);
-            limasTrapesium.setTinggiSegitigaSisiAtas(inputs.get(6));
-            limasTrapesium.setTinggiSegitigaSisiAlas(inputs.get(7));
-            limasTrapesium.setTinggiSegitigaSisiMiringSatu(inputs.get(8));
-            limasTrapesium.setTinggiSegitigaSisiMiringDua(inputs.get(9));
-        } else if(bangunDatar instanceof Tabung tabung) {
-            tabung.setTinggiTabung(inputs.get(0));
-            tabung.jariJari = inputs.get(1);
-        } else if(bangunDatar instanceof Kerucut kerucut) {
-            kerucut.setTinggiKerucut(inputs.get(0));
-            kerucut.jariJari = inputs.get(1);
-        } else if(bangunDatar instanceof KerucutTerpancung kerucutTerpancung) {
-            kerucutTerpancung.setTinggi(inputs.get(0));
-            kerucutTerpancung.setJariJariKecil(inputs.get(1));
-            kerucutTerpancung.jariJari = inputs.get(2);
-        } else if(bangunDatar instanceof Bola bola) {
-            bola.jariJari = inputs.get(0);
-        } else if(bangunDatar instanceof TemberengBola temberengBola) {
-            temberengBola.setTinggi(inputs.get(0));
-            temberengBola.jariJari = inputs.get(1);
-        } else if(bangunDatar instanceof JuringBola juringBola) {
-            juringBola.setAlpha(inputs.get(0));
-            juringBola.jariJari = inputs.get(1);
-        } else if(bangunDatar instanceof CincinBola cincinBola) {
-            cincinBola.setH1(inputs.get(0));
-            cincinBola.setH2(inputs.get(1));
-            cincinBola.jariJari = inputs.get(2);
+            else if (bangunDatar instanceof TemberengLingkaran tembereng) {
+                tembereng.jariJari = inputs.get(0);
+                tembereng.sudutTheta = inputs.get(1);
+            }
+            else if (bangunDatar instanceof JuringLingkaran juring) {
+                juring.jariJari = inputs.get(0);
+                juring.sudut = inputs.get(1);
+            }
+            else if (bangunDatar instanceof Lingkaran lingkaran) {
+                lingkaran.jariJari = inputs.get(0);
+            }
         }
         
         showResults(bangunDatar);

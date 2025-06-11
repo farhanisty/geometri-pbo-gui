@@ -7,6 +7,8 @@ package geometri.benda.geometri.lingkaran.bola;
 import geometri.benda.geometri.lingkaran.Lingkaran;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,7 +37,7 @@ public class JuringBola extends Bola {
      
     @Override
     public double hitungLuasPermukaan() {
-        this.luasPermukaan = this.hitungLuasPermukaan();
+        this.luasPermukaan = this.hitungLuasPermukaan(jariJari, alpha);
         return this.luasPermukaan;
     }
     
@@ -45,6 +47,11 @@ public class JuringBola extends Bola {
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(JuringBola.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuasPermukaan();
         this.hitungVolume();
     } 
