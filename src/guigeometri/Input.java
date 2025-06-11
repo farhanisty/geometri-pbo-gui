@@ -3,13 +3,30 @@ package guigeometri;
 import geometri.benda.geometri.BangunDatar;
 import geometri.benda.geometri.belahketupat.BelahKetupat;
 import geometri.benda.geometri.jajargenjang.JajarGenjang;
+import geometri.benda.geometri.jajargenjang.LimasJajarGenjang;
+import geometri.benda.geometri.jajargenjang.PrismaJajarGenjang;
 import geometri.benda.geometri.layanglayang.LayangLayang;
 import geometri.benda.geometri.lingkaran.JuringLingkaran;
+import geometri.benda.geometri.lingkaran.Kerucut;
+import geometri.benda.geometri.lingkaran.KerucutTerpancung;
 import geometri.benda.geometri.lingkaran.Lingkaran;
+import geometri.benda.geometri.lingkaran.Tabung;
 import geometri.benda.geometri.lingkaran.TemberengLingkaran;
+import geometri.benda.geometri.lingkaran.bola.Bola;
+import geometri.benda.geometri.lingkaran.bola.CincinBola;
+import geometri.benda.geometri.lingkaran.bola.JuringBola;
+import geometri.benda.geometri.lingkaran.bola.TemberengBola;
+import geometri.benda.geometri.persegi.LimasPersegi;
+import geometri.benda.geometri.persegi.LimasPersegiPanjang;
 import geometri.benda.geometri.persegi.Persegi;
 import geometri.benda.geometri.persegi.PersegiPanjang;
+import geometri.benda.geometri.persegi.PrismaPersegi;
+import geometri.benda.geometri.persegi.PrismaPersegiPanjang;
+import geometri.benda.geometri.segitiga.LimasSegitiga;
+import geometri.benda.geometri.segitiga.PrismaSegitiga;
 import geometri.benda.geometri.segitiga.Segitiga;
+import geometri.benda.geometri.trapesium.LimasTrapesium;
+import geometri.benda.geometri.trapesium.PrismaTrapesium;
 import geometri.benda.geometri.trapesium.Trapesium;
 import guigeometri.Inputable;
 import java.awt.Component;
@@ -101,67 +118,92 @@ public class Input extends JFrame {
         switch (this.bangunType) {
             case "Segitiga":
                 bangunDatar = new Segitiga(0, 0, 0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "Persegi":
                 bangunDatar = new Persegi(0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "PersegiPanjang":
                 bangunDatar = new PersegiPanjang(0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "JajarGenjang":
                 bangunDatar = new JajarGenjang(0, 0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "Trapesium":
                 bangunDatar = new Trapesium(0, 0, 0, 0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "BelahKetupat":
                 bangunDatar = new BelahKetupat(0, 0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "LayangLayang":
                 bangunDatar = new LayangLayang(0, 0, 0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "Lingkaran":
                 bangunDatar = new Lingkaran(0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "Tembereng":
                 bangunDatar = new TemberengLingkaran(0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
                 break;
             case "Juring":
                 bangunDatar = new JuringLingkaran(0, 0);
-                for (String input: bangunDatar.getInputs()) {
-                    addInputField(input);
-                }
+                break;
+            case "PrismaSegitiga":
+                bangunDatar = new PrismaSegitiga(0,0,0,0,0);
+                break;
+            case "LimasSegitiga":
+                bangunDatar = new LimasSegitiga(0,0,0,0,0,0,0,0);
+                break;
+            case "PrimsaPersegi":
+                bangunDatar = new PrismaPersegi(0,0);
+                break;
+            case "LimasPersegi":
+                bangunDatar = new LimasPersegi(0,0,0);
+                break;
+            case "PrismaPersegiPanjang":
+                bangunDatar = new PrismaPersegiPanjang(0,0,0);
+                break;
+            case "LimasPersegiPanjang":
+                bangunDatar = new LimasPersegiPanjang(0,0,0,0,0);
+                break;
+            case "PrisamJajaranGenjang":
+                bangunDatar = new PrismaJajarGenjang(0,0,0,0);
+                break;
+            case "LimasJajaranGenjang":
+                bangunDatar = new LimasJajarGenjang(0,0,0,0,0,0);
+                break;
+            case "PrismaTrapesium":
+                bangunDatar = new PrismaTrapesium(0,0,0,0,0,0);
+                break;
+            case "LimasTrapesium":
+                bangunDatar = new LimasTrapesium(0,0,0,0,0,0,0,0,0,0);
+                break;
+            case "Tabung":
+                bangunDatar = new Tabung(0,0);
+                break;
+            case "Kerucut":
+                bangunDatar = new Kerucut(0,0);
+                break;
+            case "KerucutTerpancung":
+                bangunDatar = new KerucutTerpancung(0,0,0);
+                break;
+            case "Bola":
+                bangunDatar = new Bola(0);
+                break;
+            case "TemberengBola":
+                bangunDatar = new TemberengBola(0,0);
+                break;
+            case "JuringBola":
+                bangunDatar = new JuringBola(0,0);
+                break;
+            case "CincinBola":
+                bangunDatar = new CincinBola(0,0,0);
                 break;
             default:
-                System.out.println("Error");
+                bangunDatar = new Bola(12);
                 
+        }
+        
+        for (String input: bangunDatar.getInputs()) {
+            addInputField(input);
         }
     }
     
@@ -276,7 +318,97 @@ public class Input extends JFrame {
             lingkaran.jariJari = inputs.get(0);
 
             showResults(lingkaran);
+        } else if (bangunDatar instanceof PrismaSegitiga prismaSegitiga) {
+            prismaSegitiga.setTinggiPrisma(inputs.get(0));
+            prismaSegitiga.sisiSatu = inputs.get(1);
+            prismaSegitiga.sisiDua = inputs.get(2);
+            prismaSegitiga.sisiAlas = inputs.get(3);
+            prismaSegitiga.tinggi = inputs.get(4);
+            
+            showResults(prismaSegitiga);
+        } else if(bangunDatar instanceof LimasSegitiga limasSegitiga) {
+            limasSegitiga.setTinggiLimas(inputs.get(0));
+            limasSegitiga.sisiSatu = inputs.get(1);
+            limasSegitiga.sisiDua = inputs.get(2);
+            limasSegitiga.sisiAlas = inputs.get(3);
+            limasSegitiga.tinggi = inputs.get(4);
+            limasSegitiga.setTinggiSegitigaSisiSatu(inputs.get(5));
+            limasSegitiga.setTinggiSegitigaSisiDua(inputs.get(6));
+            limasSegitiga.setTinggiSegitigaSisiAlas(inputs.get(7));
+            
+            showResults(limasSegitiga);
+        } else if(bangunDatar instanceof PrismaPersegi prismaPersegi) {
+            prismaPersegi.setTinggiPrisma(inputs.get(0));
+            prismaPersegi.sisi = inputs.get(1);
+        } else if(bangunDatar instanceof LimasPersegi limasPersegi) {
+            limasPersegi.setTinggiLimas(inputs.get(0));
+            limasPersegi.sisi = inputs.get(1);
+            limasPersegi.setTinggiSegitiga(inputs.get(2));
+        } else if(bangunDatar instanceof PrismaPersegiPanjang prismaPersegiPanjang) {
+            prismaPersegiPanjang.setTinggiPrisma(inputs.get(0));
+            prismaPersegiPanjang.sisiPendek = inputs.get(1);
+            prismaPersegiPanjang.sisiPanjang = inputs.get(2);
+        } else if(bangunDatar instanceof LimasPersegiPanjang limasPersegiPanjang) {
+            limasPersegiPanjang.setTinggiLimas(inputs.get(0));
+            limasPersegiPanjang.sisiPendek = inputs.get(1);
+            limasPersegiPanjang.sisiPanjang = inputs.get(2);
+            limasPersegiPanjang.setTinggiSegitigaSisiPendek(inputs.get(3));
+            limasPersegiPanjang.setTinggiSegitigaSisiPanjang(inputs.get(4));
+        } else if(bangunDatar instanceof PrismaJajarGenjang prismaJajarGenjang) {
+            prismaJajarGenjang.setTinggiPrisma(inputs.get(0));
+            prismaJajarGenjang.sisiDatar = inputs.get(1);
+            prismaJajarGenjang.sisiMiring = inputs.get(2);
+            prismaJajarGenjang.tinggi = inputs.get(3);
+        } else if(bangunDatar instanceof LimasJajarGenjang limasJajarGenjang) {
+            limasJajarGenjang.setTinggiLimas(inputs.get(0));
+            limasJajarGenjang.sisiDatar = inputs.get(1);
+            limasJajarGenjang.sisiMiring = inputs.get(2);
+            limasJajarGenjang.tinggi = inputs.get(3);
+            limasJajarGenjang.setTinggiSegitigaSisiDatar(inputs.get(4));
+            limasJajarGenjang.setTinggiSegitigaSisiMiring(inputs.get(5));
+        } else if(bangunDatar instanceof PrismaTrapesium prismaTrapesium) {
+            prismaTrapesium.setTinggiPrisma(inputs.get(0));
+            prismaTrapesium.sisiAtas = inputs.get(1);
+            prismaTrapesium.sisiAlas = inputs.get(2);
+            prismaTrapesium.sisiMiringSatu = inputs.get(3);
+            prismaTrapesium.sisiMiringDua = inputs.get(4);
+            prismaTrapesium.tinggi = inputs.get(5);
+        } else if(bangunDatar instanceof LimasTrapesium limasTrapesium) {
+            limasTrapesium.setTinggiLimas(inputs.get(0));
+            limasTrapesium.sisiAtas = inputs.get(1);
+            limasTrapesium.sisiAlas = inputs.get(2);
+            limasTrapesium.sisiMiringSatu = inputs.get(3);
+            limasTrapesium.sisiMiringDua = inputs.get(4);
+            limasTrapesium.tinggi = inputs.get(5);
+            limasTrapesium.setTinggiSegitigaSisiAtas(inputs.get(6));
+            limasTrapesium.setTinggiSegitigaSisiAlas(inputs.get(7));
+            limasTrapesium.setTinggiSegitigaSisiMiringSatu(inputs.get(8));
+            limasTrapesium.setTinggiSegitigaSisiMiringDua(inputs.get(9));
+        } else if(bangunDatar instanceof Tabung tabung) {
+            tabung.setTinggiTabung(inputs.get(0));
+            tabung.jariJari = inputs.get(1);
+        } else if(bangunDatar instanceof Kerucut kerucut) {
+            kerucut.setTinggiKerucut(inputs.get(0));
+            kerucut.jariJari = inputs.get(1);
+        } else if(bangunDatar instanceof KerucutTerpancung kerucutTerpancung) {
+            kerucutTerpancung.setTinggi(inputs.get(0));
+            kerucutTerpancung.setJariJariKecil(inputs.get(1));
+            kerucutTerpancung.jariJari = inputs.get(2);
+        } else if(bangunDatar instanceof Bola bola) {
+            bola.jariJari = inputs.get(0);
+        } else if(bangunDatar instanceof TemberengBola temberengBola) {
+            temberengBola.setTinggi(inputs.get(0));
+            temberengBola.jariJari = inputs.get(1);
+        } else if(bangunDatar instanceof JuringBola juringBola) {
+            juringBola.setAlpha(inputs.get(0));
+            juringBola.jariJari = inputs.get(1);
+        } else if(bangunDatar instanceof CincinBola cincinBola) {
+            cincinBola.setH1(inputs.get(0));
+            cincinBola.setH2(inputs.get(1));
+            cincinBola.jariJari = inputs.get(2);
         }
+        
+        showResults(bangunDatar);
     }
     
     private double validateInput(String input) throws IllegalArgumentException, NumberFormatException {
