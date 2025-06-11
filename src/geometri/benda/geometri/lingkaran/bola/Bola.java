@@ -41,7 +41,7 @@ public class Bola extends Lingkaran implements BangunRuang {
     }
     
     public double hitungLuasPermukaan(double jariJari) {
-        return Math.pow(jariJari, 2) * Lingkaran.PI * 4;
+        return super.hitungLuas(jariJari) * 4;
     }
     
     
