@@ -93,18 +93,22 @@ public class JuringBola extends Bola {
         this.alpha = alpha;
     }
 
+    @Override
     public double getVolume() {
         return volume;
     }
 
+    @Override
     public void setVolume(double volume) {
         this.volume = volume;
     }
 
+    @Override
     public double getLuasPermukaan() {
         return luasPermukaan;
     }
 
+    @Override
     public void setLuasPermukaan(double luasPermukaan) {
         this.luasPermukaan = luasPermukaan;
     }
