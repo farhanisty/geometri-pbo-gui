@@ -4,6 +4,9 @@
  */
 package geometri.benda.geometri.lingkaran;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author farhannivta
@@ -11,6 +14,8 @@ package geometri.benda.geometri.lingkaran;
 public class JuringLingkaran extends Lingkaran implements Runnable {
     public double sudut;
     public double panjangBusur;
+    public double luas;
+    public double keliling;
     
     public JuringLingkaran(double sudut, double jariJari) {
         super(jariJari);
@@ -56,5 +61,28 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+        this.hitungPanjangBusur();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Jari-jari");
+        inputs.add("Sudut");
+        return inputs;
+    }
+
+    @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
+    }
+
+    public double getPanjangBusur() {
+        return panjangBusur;
     }
 }

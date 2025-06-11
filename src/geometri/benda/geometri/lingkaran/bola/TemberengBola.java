@@ -4,6 +4,9 @@
  */
 package geometri.benda.geometri.lingkaran.bola;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author farhannivta
@@ -54,6 +57,20 @@ public class TemberengBola extends Bola {
     
     public double hitungLuasPermukaan(double tinggi, double jariJari) {
         return this.hitungLuasPermukaanMelengkung(tinggi, jariJari) + this.hitungLuasBidangPotong(tinggi, jariJari);
+    }
+    
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }
+    
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Jari-jari");
+        inputs.add("Sudut Theta");
+        return inputs;
     }
     
     @Override

@@ -1,6 +1,8 @@
 package geometri.benda.geometri.persegi;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang {
@@ -56,7 +58,19 @@ public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang 
     public void setVolume(double volume) {
         this.volume = volume;
     }
-
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Sisi Pendek");
+        inputs.add("Sisi Panjang");
+        return inputs;
+    }
+    
     @Override
     public String getNama() {
         return "Prisma Persegi Panjang";

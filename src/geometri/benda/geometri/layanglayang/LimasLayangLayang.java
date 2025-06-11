@@ -1,6 +1,8 @@
 package geometri.benda.geometri.layanglayang;
 
 import geometri.benda.geometri.BangunRuang;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LimasLayangLayang extends LayangLayang implements BangunRuang {
     private double tinggiLimas;
@@ -81,6 +83,20 @@ public class LimasLayangLayang extends LayangLayang implements BangunRuang {
 
     public void setVolume(double volume) {
         this.volume = volume;
+    }
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Diagonal Satu");
+        inputs.add("Diagonal Dua");
+        inputs.add("Sisi Pendek");
+        inputs.add("Sisi Panjang");
+        return inputs;
     }
     
     @Override

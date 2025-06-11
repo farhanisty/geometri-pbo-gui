@@ -6,6 +6,8 @@ package geometri.benda.geometri.lingkaran;
 
 import geometri.benda.geometri.BangunRuang;
 import geometri.benda.geometri.lingkaran.Lingkaran;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -35,6 +37,20 @@ public class Kerucut extends Lingkaran implements BangunRuang{
     public String getNama() {
         return "Kerucut";
     }
+    
+    
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Jari Jari");
+        return inputs;
+    }
+    
+    @Override
+    public void run() {
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
+    }    
 
     @Override
     public double hitungLuasPermukaan() {

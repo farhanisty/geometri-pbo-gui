@@ -4,6 +4,9 @@
  */
 package geometri.benda.geometri.lingkaran;
 
+import java.util.ArrayList;
+import java.util.List;
+import geometri.benda.geometri.BangunDatar;
 /**
  *
  * @author farhannivta
@@ -60,5 +63,23 @@ public class TemberengLingkaran extends Lingkaran implements Runnable {
     public void run() {
         this.hitungLuas();
         this.hitungKeliling();
+    }
+
+    @Override
+    public List<String> getInputs() {
+        List<String> inputs = new ArrayList<>();
+        inputs.add("Jari-jari");
+        inputs.add("Sudut Theta");
+        return inputs;
+    }
+
+    @Override
+    public double getLuas() {
+        return luas;
+    }
+
+    @Override
+    public double getKeliling() {
+        return keliling;
     }
 }
