@@ -185,16 +185,21 @@ public class Input extends JFrame {
     }
     
     private void hitungInput() {
+        Component[] components = inputPanel.getComponents();
+        List<Double> inputs = new ArrayList<>();
+        
         try {
-            
-            Component[] components = inputPanel.getComponents();
-            List<Double> inputs = new ArrayList<>();
-            
             for (Component comp : components) {
                 if (comp instanceof JTextField) {
                     inputs.add(Double.parseDouble(((JTextField) comp).getText()));
                 }
             }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,
+                "Mohon masukkan angka yang valid untuk semua field.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
             
             
             
@@ -202,8 +207,7 @@ public class Input extends JFrame {
 //            "Segitiga", "Persegi", "PersegiPanjang", "JajarGenjang", "Trapesium",
 //            "BelahKetupat", "LayangLayang", "Lingkaran", "Tembereng", "Juring"
 //        };
-            if (bangunDatar instanceof Segitiga) {
-                Segitiga segitiga = (Segitiga) bangunDatar;
+            if (bangunDatar instanceof Segitiga segitiga) {
                 segitiga.sisiSatu = inputs.get(0);
                 segitiga.sisiDua = inputs.get(1);
                 segitiga.sisiAlas = inputs.get(2);
@@ -211,30 +215,26 @@ public class Input extends JFrame {
                 
                 showResults(segitiga);
             }
-            else if (bangunDatar instanceof Persegi) {
+            else if (bangunDatar instanceof Persegi persegi) {
                 
-                Persegi persegi = (Persegi) bangunDatar;
                 persegi.sisi = inputs.get(0);
                 
                 showResults(persegi);
             }
-            else if (bangunDatar instanceof PersegiPanjang) {
-                PersegiPanjang persegipanjang = (PersegiPanjang) bangunDatar;
+            else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
                 persegipanjang.sisiPendek = inputs.get(0);
                 persegipanjang.sisiPanjang = inputs.get(1);
                 
                 showResults(persegipanjang);
             }
-            else if (bangunDatar instanceof JajarGenjang) {
-                JajarGenjang jajargenjang = (JajarGenjang) bangunDatar;
+            else if (bangunDatar instanceof JajarGenjang jajargenjang) {
                 jajargenjang.sisiDatar = inputs.get(0);
                 jajargenjang.sisiMiring = inputs.get(1);
                 jajargenjang.tinggi = inputs.get(2);
 
                 showResults(jajargenjang);
             }
-            else if (bangunDatar instanceof Trapesium) {
-                Trapesium trapesium = (Trapesium) bangunDatar;
+            else if (bangunDatar instanceof Trapesium trapesium) {
                 trapesium.sisiAtas = inputs.get(0);
                 trapesium.sisiAlas = inputs.get(1);
                 trapesium.sisiMiringSatu = inputs.get(2);
@@ -243,16 +243,14 @@ public class Input extends JFrame {
                 
                 showResults(trapesium);
             }
-            else if (bangunDatar instanceof BelahKetupat) {
-                BelahKetupat belahketupat = (BelahKetupat) bangunDatar;
+            else if (bangunDatar instanceof BelahKetupat belahketupat) {
                 belahketupat.sisi = inputs.get(0);
                 belahketupat.diagonalSatu = inputs.get(1);
                 belahketupat.diagonalDua = inputs.get(2);
                 
                 showResults(belahketupat);
             }
-            else if (bangunDatar instanceof LayangLayang) {
-                LayangLayang layanglayang = (LayangLayang) bangunDatar;
+            else if (bangunDatar instanceof LayangLayang layanglayang) {
                 layanglayang.diagonalSatu = inputs.get(0);
                 layanglayang.diagonalDua = inputs.get(1);
                 layanglayang.sisiPendek = inputs.get(2);
@@ -261,33 +259,23 @@ public class Input extends JFrame {
                 showResults(layanglayang);
             }
             
-            else if (bangunDatar instanceof TemberengLingkaran) {
-                TemberengLingkaran tembereng = (TemberengLingkaran) bangunDatar;
+            else if (bangunDatar instanceof TemberengLingkaran tembereng) {
                 tembereng.jariJari = inputs.get(0);
                 tembereng.sudutTheta = inputs.get(1);
                 
                 showResults(tembereng);
             }
-            else if (bangunDatar instanceof JuringLingkaran) {
-                JuringLingkaran juring = (JuringLingkaran) bangunDatar;
+            else if (bangunDatar instanceof JuringLingkaran juring) {
                 juring.jariJari = inputs.get(0);
                 juring.sudut = inputs.get(1);
                 
                 showResults(juring);
             }
-            else if (bangunDatar instanceof Lingkaran) {
-                Lingkaran lingkaran = (Lingkaran) bangunDatar;
+            else if (bangunDatar instanceof Lingkaran lingkaran) {
                 lingkaran.jariJari = inputs.get(0);
                 
                 showResults(lingkaran);
             }
-            
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this,
-                "Mohon masukkan angka yang valid untuk semua field.",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-        }
     }
     
     private void showResults(BangunDatar bangunDatar) {
