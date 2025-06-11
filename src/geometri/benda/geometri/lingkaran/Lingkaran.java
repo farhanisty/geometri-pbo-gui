@@ -7,6 +7,8 @@ package geometri.benda.geometri.lingkaran;
 import geometri.benda.geometri.BangunDatar;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -49,6 +51,11 @@ public class Lingkaran extends BangunDatar implements Runnable {
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Lingkaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuas();
         this.hitungKeliling();
     }

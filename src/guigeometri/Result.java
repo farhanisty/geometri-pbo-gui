@@ -11,94 +11,126 @@ import geometri.benda.geometri.BangunRuang;
 
 public class Result extends JDialog {
     private BangunDatar bangunDatar;
+    private JLabel loadingLabel;
+    private Timer dotTimer;
     
     public Result(JFrame parent, String title, BangunDatar bangunDatar) {
         super(parent, title, true);
         this.bangunDatar = bangunDatar;
-        setupDialog();
-    }
-    
-    private void setupDialog() {
+        
         setSize(800, 400);  // Make dialog wider to accommodate image
         setLocationRelativeTo(getParent());
         setResizable(false);
         
-        // Main panel with BorderLayout
+        SwingUtilities.invokeLater(() -> {
+            this.setupDialog();
+        });
+        
+    }
+
+    private void startDotAnimation() {
+        dotTimer = new Timer(500, new java.awt.event.ActionListener() {
+            int dotCount = 0;
+
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                dotCount = (dotCount + 1) % 4; 
+                String dots = ".".repeat(dotCount);
+                loadingLabel.setText("Menghitung" + dots);
+            }
+        });
+        dotTimer.start();
+    }
+    
+    private void setupDialog() {
+        CardLayout cardLayout = new CardLayout();
+        JPanel containerPanel = new JPanel(cardLayout);
+        add(containerPanel); // Hanya satu kali add ke JFrame/JDialog
+
+        // -------------------- PANEL LOADING --------------------
+        JPanel loadingPanel = new JPanel(new BorderLayout());
+        loadingLabel = new JLabel("Menghitung, mohon tunggu");
+        loadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        loadingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        loadingPanel.add(loadingLabel, BorderLayout.CENTER);
+
+        dotTimer = new Timer(500, new java.awt.event.ActionListener() {
+            int dotCount = 0;
+
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                dotCount = (dotCount + 1) % 4; 
+                String dots = ".".repeat(dotCount);
+                loadingLabel.setText("Menghitung" + dots);
+            }
+        });
+        dotTimer.start();
+
+        containerPanel.add(loadingPanel, "loading");
+
+        // -------------------- PANEL MAIN --------------------
         JPanel mainPanel = new JPanel(new BorderLayout(20, 20));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        
-        // Left panel for calculation results
+
         JPanel resultPanel = new JPanel();
         resultPanel.setLayout(new BoxLayout(resultPanel, BoxLayout.Y_AXIS));
-        
-        if(bangunDatar instanceof BangunRuang bangunRuang) {
-            String luasPermukaan = String.format("%.2f", bangunRuang.hitungLuasPermukaan());
-            String volume = String.format("%.2f", bangunRuang.hitungVolume());
-            
-            JLabel luasPermukaanLabel = new JLabel("Luas Permukaan: " + luasPermukaan + " satuan persegi");
-            luasPermukaanLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            luasPermukaanLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            JLabel volumeLabel = new JLabel("Volume: " + volume + " kubik");
-            volumeLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            volumeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            
-            resultPanel.add(luasPermukaanLabel);
-            resultPanel.add(volumeLabel);
-        } else {
-            String luasStr = String.format("%.2f", bangunDatar.getLuas());
-            String kelilingStr = String.format("%.2f", bangunDatar.getKeliling());
-
-            JLabel luasLabel = new JLabel("Luas: " + luasStr + " satuan persegi");
-            luasLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            luasLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-            JLabel kelilingLabel = new JLabel("Keliling: " + kelilingStr + " satuan");
-            kelilingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-            kelilingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            resultPanel.add(luasLabel);
-            resultPanel.add(kelilingLabel);
-        }
-        
-        JButton tutupButton = new JButton("Tutup");
-        tutupButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        tutupButton.addActionListener(e -> dispose());
-        
-        
-        resultPanel.add(Box.createVerticalStrut(10));
-        resultPanel.add(Box.createVerticalStrut(20));
-        resultPanel.add(tutupButton);
-        
-        // Right panel for image
         JPanel imagePanel = new JPanel(new BorderLayout());
         imagePanel.setPreferredSize(new Dimension(300, 300));
-        
-        try {
-            // Ambil nama gambar dengan pola yang sama seperti di class menu
-            String imagePath = "/gambar/" + bangunDatar.getNama().toLowerCase().replace(" ", "_").replace(".", "") + ".png";
 
-            
+        try {
+            String imagePath = "/gambar/" + bangunDatar.getNama().toLowerCase().replace(" ", "_").replace(".", "") + ".png";
             ImageIcon icon = new ImageIcon(getClass().getResource(imagePath));
             Image image = icon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-
-            
             JLabel imageLabel = new JLabel(new ImageIcon(image));
             imagePanel.add(imageLabel, BorderLayout.CENTER);
         } catch (Exception e) {
-            e.printStackTrace();  // Debug jika terjadi kesalahan
+            e.printStackTrace();
             JLabel errorLabel = new JLabel("Gambar tidak ditemukan");
             errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
             imagePanel.add(errorLabel, BorderLayout.CENTER);
         }
 
-
-
-        
-        // Add panels to main panel
         mainPanel.add(resultPanel, BorderLayout.WEST);
         mainPanel.add(imagePanel, BorderLayout.EAST);
-        
-        add(mainPanel);
+        containerPanel.add(mainPanel, "main");
+
+        // -------------------- WORKER --------------------
+        SwingWorker<Void, Void> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() {
+                bangunDatar.run(); // proses hitung
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                dotTimer.stop();
+
+                if(bangunDatar instanceof BangunRuang bangunRuang) {
+                    resultPanel.add(new JLabel("Luas Permukaan: " + bangunRuang.hitungLuasPermukaan()));
+                    resultPanel.add(new JLabel("Volume: " + bangunRuang.hitungVolume()));
+                } else {
+                    resultPanel.add(new JLabel("Luas: " + bangunDatar.getLuas()));
+                    resultPanel.add(new JLabel("Keliling: " + bangunDatar.getKeliling()));
+                }
+
+                JButton tutupButton = new JButton("Tutup");
+                tutupButton.addActionListener(e -> dispose());
+                resultPanel.add(tutupButton);
+
+                mainPanel.revalidate();
+                mainPanel.repaint();
+
+                // Ganti panel loading ke panel hasil
+                cardLayout.show(containerPanel, "main");
+            }
+        };
+
+        worker.execute();
+
+        // Tampilkan panel loading pertama kali
+        cardLayout.show(containerPanel, "loading");
     }
     
     private Image getScaledImage(Image srcImg, int width, int height) {

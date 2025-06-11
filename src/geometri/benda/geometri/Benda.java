@@ -8,6 +8,6 @@ package geometri.benda.geometri;
  *
  * @author farhannivta
  */
-public interface Benda {
+public interface Benda extends Runnable {
     public String getNama();
 }
