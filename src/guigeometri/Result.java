@@ -10,11 +10,64 @@ import geometri.benda.geometri.BangunDatar;
 
 public class Result extends JDialog {
     private BangunDatar bangunDatar;
+    private JLabel loadingLabel;
+    private Timer dotTimer;
     
     public Result(JFrame parent, String title, BangunDatar bangunDatar) {
         super(parent, title, true);
         this.bangunDatar = bangunDatar;
-        setupDialog();
+        setupLoadingScreen(); // show loading screen immediately
+        startResultTimer();   // start 3-second timer
+    }
+
+    private void setupLoadingScreen() {
+        setSize(400, 150);
+        setLocationRelativeTo(getParent());
+        setResizable(false);
+
+        JPanel loadingPanel = new JPanel(new BorderLayout());
+        loadingLabel = new JLabel("Menghitung, mohon tunggu");
+        loadingLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        loadingLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        loadingPanel.add(loadingLabel, BorderLayout.CENTER);
+
+        add(loadingPanel);
+        startDotAnimation();
+        setVisible(true);
+    }
+
+    private void startDotAnimation() {
+        dotTimer = new Timer(500, new java.awt.event.ActionListener() {
+            int dotCount = 0;
+
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                dotCount = (dotCount + 1) % 4; 
+                String dots = ".".repeat(dotCount);
+                loadingLabel.setText("Menghitung" + dots);
+            }
+        });
+        dotTimer.start();
+    }
+
+    private void startResultTimer() {
+        new Timer(3000, e -> {
+            ((Timer) e.getSource()).stop();
+            dotTimer.stop(); 
+
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() {
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    setupDialog(); 
+                }
+            };
+            worker.execute();
+        }).start();
     }
     
     private void setupDialog() {
