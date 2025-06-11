@@ -5,8 +5,11 @@
 package geometri.benda.geometri.trapesium;
 
 import geometri.benda.geometri.BangunDatar;
+import geometri.benda.geometri.belahketupat.BelahKetupat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,6 +59,11 @@ public class Trapesium extends BangunDatar implements Runnable {
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Trapesium.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuas();
         this.hitungKeliling();
     }

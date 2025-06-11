@@ -4,8 +4,11 @@
  */
 package geometri.benda.geometri.lingkaran;
 
+import geometri.benda.geometri.belahketupat.BelahKetupat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,6 +62,11 @@ public class JuringLingkaran extends Lingkaran implements Runnable {
         
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(JuringLingkaran.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuas();
         this.hitungKeliling();
         this.hitungPanjangBusur();

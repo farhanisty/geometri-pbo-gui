@@ -3,6 +3,8 @@ package geometri.benda.geometri.persegi;
 import geometri.benda.geometri.BangunRuang;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PrismaPersegi extends Persegi implements BangunRuang {
     private double luasPermukaan;
@@ -42,6 +44,11 @@ public class PrismaPersegi extends Persegi implements BangunRuang {
     
     @Override
     public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PrismaPersegi.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.hitungLuasPermukaan();
         this.hitungVolume();
     }   

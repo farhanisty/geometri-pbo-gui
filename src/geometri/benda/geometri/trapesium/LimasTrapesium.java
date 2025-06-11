@@ -1,8 +1,11 @@
 package geometri.benda.geometri.trapesium;
 
 import geometri.benda.geometri.BangunRuang;
+import geometri.benda.geometri.segitiga.PrismaSegitiga;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LimasTrapesium extends Trapesium implements BangunRuang {
     private double tinggiLimas;
@@ -51,6 +54,17 @@ public class LimasTrapesium extends Trapesium implements BangunRuang {
         double luasSisiMiringSatu = 0.5 * sisiMiringSatu * tinggiSegitigaSisiMiringSatu;
         double luasSisiMiringDua = 0.5 * sisiMiringDua * tinggiSegitigaSisiMiringDua;
         return luasAlas + luasSisiAtas + luasSisiAlas + luasSisiMiringSatu + luasSisiMiringDua;
+    }
+    
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LimasTrapesium.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.hitungLuasPermukaan();
+        this.hitungVolume();
     }
 
     public double getTinggiLimas() {
