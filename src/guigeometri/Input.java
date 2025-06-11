@@ -255,27 +255,19 @@ public class Input extends JFrame {
             segitiga.sisiDua = inputs.get(1);
             segitiga.sisiAlas = inputs.get(2);
             segitiga.tinggi = inputs.get(3);
-
-            showResults(segitiga);
         }
         else if (bangunDatar instanceof Persegi persegi) {
 
             persegi.sisi = inputs.get(0);
-
-            showResults(persegi);
         }
         else if (bangunDatar instanceof PersegiPanjang persegipanjang) {
             persegipanjang.sisiPendek = inputs.get(0);
             persegipanjang.sisiPanjang = inputs.get(1);
-
-            showResults(persegipanjang);
         }
         else if (bangunDatar instanceof JajarGenjang jajargenjang) {
             jajargenjang.sisiDatar = inputs.get(0);
             jajargenjang.sisiMiring = inputs.get(1);
             jajargenjang.tinggi = inputs.get(2);
-
-            showResults(jajargenjang);
         }
         else if (bangunDatar instanceof Trapesium trapesium) {
             trapesium.sisiAtas = inputs.get(0);
@@ -283,49 +275,35 @@ public class Input extends JFrame {
             trapesium.sisiMiringSatu = inputs.get(2);
             trapesium.sisiMiringDua = inputs.get(3);
             trapesium.tinggi = inputs.get(4);
-
-            showResults(trapesium);
         }
         else if (bangunDatar instanceof BelahKetupat belahketupat) {
             belahketupat.sisi = inputs.get(0);
             belahketupat.diagonalSatu = inputs.get(1);
             belahketupat.diagonalDua = inputs.get(2);
-
-            showResults(belahketupat);
         }
         else if (bangunDatar instanceof LayangLayang layanglayang) {
             layanglayang.diagonalSatu = inputs.get(0);
             layanglayang.diagonalDua = inputs.get(1);
             layanglayang.sisiPendek = inputs.get(2);
             layanglayang.sisiPanjang = inputs.get(3);
-
-            showResults(layanglayang);
         }
 
         else if (bangunDatar instanceof TemberengLingkaran tembereng) {
             tembereng.jariJari = inputs.get(0);
             tembereng.sudutTheta = inputs.get(1);
-
-            showResults(tembereng);
         }
         else if (bangunDatar instanceof JuringLingkaran juring) {
             juring.jariJari = inputs.get(0);
             juring.sudut = inputs.get(1);
-
-            showResults(juring);
         }
         else if (bangunDatar instanceof Lingkaran lingkaran) {
             lingkaran.jariJari = inputs.get(0);
-
-            showResults(lingkaran);
         } else if (bangunDatar instanceof PrismaSegitiga prismaSegitiga) {
             prismaSegitiga.setTinggiPrisma(inputs.get(0));
             prismaSegitiga.sisiSatu = inputs.get(1);
             prismaSegitiga.sisiDua = inputs.get(2);
             prismaSegitiga.sisiAlas = inputs.get(3);
             prismaSegitiga.tinggi = inputs.get(4);
-            
-            showResults(prismaSegitiga);
         } else if(bangunDatar instanceof LimasSegitiga limasSegitiga) {
             limasSegitiga.setTinggiLimas(inputs.get(0));
             limasSegitiga.sisiSatu = inputs.get(1);
@@ -335,8 +313,6 @@ public class Input extends JFrame {
             limasSegitiga.setTinggiSegitigaSisiSatu(inputs.get(5));
             limasSegitiga.setTinggiSegitigaSisiDua(inputs.get(6));
             limasSegitiga.setTinggiSegitigaSisiAlas(inputs.get(7));
-            
-            showResults(limasSegitiga);
         } else if(bangunDatar instanceof PrismaPersegi prismaPersegi) {
             prismaPersegi.sisi = inputs.get(0);
         } else if(bangunDatar instanceof LimasPersegi limasPersegi) {
