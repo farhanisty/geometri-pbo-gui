@@ -32,7 +32,8 @@ public class JuringBola extends Bola {
     }
      
      public double hitungVolume(double jariJari, double alpha) {
-        return (2 * Math.PI * Math.pow(jariJari, 3) / 3) * (1 - Math.cos(alpha));
+//        return (2 * Math.PI * Math.pow(jariJari, 3) / 3) * (1 - Math.cos(Math.toRadians(alpha)));
+          return ((alpha / 360) * super.hitungVolume(jariJari)); 
     }
      
     @Override
@@ -42,7 +43,8 @@ public class JuringBola extends Bola {
     }
     
     public double hitungLuasPermukaan(double jariJari, double alpha) {
-        return this.hitungLuasPermukaanMelengkung(jariJari, alpha) + this.hitungLuasBidangSegitigaKerucut(jariJari, alpha);
+//        return this.hitungLuasPermukaanMelengkung(jariJari, alpha) + this.hitungLuasBidangSegitigaKerucut(jariJari, alpha);
+        return (alpha * 4 / 360 + 1)* super.hitungLuas(jariJari);
     }
     
     @Override

@@ -183,7 +183,7 @@ public class Input extends JFrame {
                 bangunDatar = new Tabung(0,0);
                 break;
             case "Kerucut":
-                bangunDatar = new Kerucut(0,0);
+                bangunDatar = new Kerucut(0,0,0);
                 break;
             case "KerucutTerpancung":
                 bangunDatar = new KerucutTerpancung(0,0,0);
@@ -322,6 +322,7 @@ public class Input extends JFrame {
             } else if(bangunDatar instanceof Kerucut kerucut) {
                 kerucut.setTinggiKerucut(inputs.get(0));
                 kerucut.jariJari = inputs.get(1);
+                kerucut.setGarisPelukis(inputs.get(2));
             } else if(bangunDatar instanceof KerucutTerpancung kerucutTerpancung) {
                 kerucutTerpancung.setTinggi(inputs.get(0));
                 kerucutTerpancung.setJariJariKecil(inputs.get(1));

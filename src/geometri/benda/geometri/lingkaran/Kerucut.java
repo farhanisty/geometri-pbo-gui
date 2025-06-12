@@ -18,12 +18,14 @@ import java.util.logging.Logger;
  */
 public class Kerucut extends Lingkaran implements BangunRuang{
     private double tinggiKerucut;
+    private double garisPelukis;
     private double luasPermukaan;
     private double volume;
     
-    public Kerucut(double tinggiKerucut, double jariJari) {
+    public Kerucut(double tinggiKerucut, double jariJari, double garisPelukis) {
         super(jariJari);
         this.tinggiKerucut = tinggiKerucut;
+        this.garisPelukis = garisPelukis;
     }
     
     @Override
@@ -47,6 +49,7 @@ public class Kerucut extends Lingkaran implements BangunRuang{
         List<String> inputs = new ArrayList<>();
         inputs.add("Tinggi Kerucut");
         inputs.add("Jari Jari");
+        inputs.add("Garis Pelukis");
         return inputs;
     }
     
@@ -63,7 +66,12 @@ public class Kerucut extends Lingkaran implements BangunRuang{
 
     @Override
     public double hitungLuasPermukaan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        this.luasPermukaan = this.hitungLuasPermukaan(jariJari, garisPelukis);
+        return this.luasPermukaan;
+    }
+    
+    public double hitungLuasPermukaan(double jariJari, double garisPelukis) {
+        return Lingkaran.PI * jariJari * (jariJari + garisPelukis);
     }
 
     public double getTinggiKerucut() {
@@ -89,4 +97,13 @@ public class Kerucut extends Lingkaran implements BangunRuang{
     public void setVolume(double volume) {
         this.volume = volume;
     }
+
+    public double getGarisPelukis() {
+        return garisPelukis;
+    }
+
+    public void setGarisPelukis(double garisPelukis) {
+        this.garisPelukis = garisPelukis;
+    }
+    
 }
