@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class LayangLayang extends BangunDatar implements Runnable {
+public class LayangLayang extends BangunDatar {
     public double diagonalSatu;
     public double diagonalDua;
     public double sisiPendek;

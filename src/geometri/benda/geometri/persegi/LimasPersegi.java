@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LimasPersegi extends Persegi implements BangunRuang, Runnable {
+public class LimasPersegi extends Persegi implements BangunRuang {
     private double tinggiLimas;
     private double tinggiSegitiga;
     private double luasPermukaan;

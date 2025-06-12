@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class LimasSegitiga extends Segitiga implements BangunRuang, Runnable {
+public class LimasSegitiga extends Segitiga implements BangunRuang {
     private double tinggiLimas;
     private double tinggiSegitigaSisiSatu;
     private double tinggiSegitigaSisiDua;

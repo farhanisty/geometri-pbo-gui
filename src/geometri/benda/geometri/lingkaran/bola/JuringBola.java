@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class JuringBola extends Bola implements Runnable {
+public class JuringBola extends Bola {
     private double alpha;
     private double volume;
     private double luasPermukaan;

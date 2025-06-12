@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Lingkaran extends BangunDatar implements Runnable {
+public class Lingkaran extends BangunDatar {
     public static final double PI = 3.14;
     public double jariJari;
     public double luas;

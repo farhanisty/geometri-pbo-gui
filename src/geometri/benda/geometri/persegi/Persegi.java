@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Persegi extends BangunDatar implements Runnable, Inputable {
+public class Persegi extends BangunDatar {
     public double luas;
     public double keliling;
     public double sisi;

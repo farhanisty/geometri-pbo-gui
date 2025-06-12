@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class BelahKetupat extends BangunDatar implements Runnable, Inputable {
+public class BelahKetupat extends BangunDatar {
     public double sisi;
     public double diagonalSatu;
     public double diagonalDua;

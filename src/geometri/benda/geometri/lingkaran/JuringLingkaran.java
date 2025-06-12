@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class JuringLingkaran extends Lingkaran implements Runnable {
+public class JuringLingkaran extends Lingkaran {
     public double sudut;
     public double panjangBusur;
     public double luas;

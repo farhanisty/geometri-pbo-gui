@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PrismaJajarGenjang extends JajarGenjang implements BangunRuang, Runnable {
+public class PrismaJajarGenjang extends JajarGenjang implements BangunRuang {
     private double tinggiPrisma;
     private double luasPermukaan;
     private double volume;

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class JajarGenjang extends BangunDatar implements Runnable {
+public class JajarGenjang extends BangunDatar {
     public double sisiDatar;
     public double sisiMiring;
     public double tinggi;

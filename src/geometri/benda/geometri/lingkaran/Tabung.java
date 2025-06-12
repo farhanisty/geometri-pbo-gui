@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Tabung extends Lingkaran implements BangunRuang, Runnable {
+public class Tabung extends Lingkaran implements BangunRuang {
     private double tinggiTabung;
     private double luasPermukaaan;
     private double volume;

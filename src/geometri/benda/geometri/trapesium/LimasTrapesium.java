@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LimasTrapesium extends Trapesium implements BangunRuang, Runnable {
+public class LimasTrapesium extends Trapesium implements BangunRuang {
     private double tinggiLimas;
     private double tinggiSegitigaSisiAtas;
     private double tinggiSegitigaSisiAlas;

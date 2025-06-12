@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Segitiga extends BangunDatar implements Runnable {
+public class Segitiga extends BangunDatar {
     public double sisiSatu;
     public double sisiDua;
     public double sisiAlas;

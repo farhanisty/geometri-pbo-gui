@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Trapesium extends BangunDatar implements Runnable {
+public class Trapesium extends BangunDatar {
     public double sisiAtas;
     public double sisiAlas;
     public double sisiMiringSatu;

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class TemberengBola extends Bola implements Runnable {
+public class TemberengBola extends Bola {
     private double tinggi;
     private double luasPermukaan;
     private double volume;

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class PersegiPanjang extends BangunDatar implements Runnable {
+public class PersegiPanjang extends BangunDatar {
     public double sisiPendek;
     public double sisiPanjang;
     public double luas;

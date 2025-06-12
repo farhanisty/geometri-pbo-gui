@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class Bola extends Lingkaran implements BangunRuang, Runnable {
+public class Bola extends Lingkaran implements BangunRuang {
     private double volume;
     private double luasPermukaan;
     
