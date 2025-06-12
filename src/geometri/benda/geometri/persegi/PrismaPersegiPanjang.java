@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang {
+public class PrismaPersegiPanjang extends PersegiPanjang implements BangunRuang, Runnable {
     private double tinggiPrisma;
     private double luasPermukaan;
     private double volume;

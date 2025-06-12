@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PrismaPersegi extends Persegi implements BangunRuang {
+public class PrismaPersegi extends Persegi implements BangunRuang, Runnable {
     private double luasPermukaan;
     private double volume;
 

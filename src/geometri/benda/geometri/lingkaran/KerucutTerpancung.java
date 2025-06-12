@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class KerucutTerpancung extends Lingkaran implements BangunRuang {
+public class KerucutTerpancung extends Lingkaran implements BangunRuang, Runnable {
     private double jariJariKecil;
     private double tinggi;
     private double volume;

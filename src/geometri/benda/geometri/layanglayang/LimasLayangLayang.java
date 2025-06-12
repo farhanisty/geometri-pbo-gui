@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LimasLayangLayang extends LayangLayang implements BangunRuang {
+public class LimasLayangLayang extends LayangLayang implements BangunRuang, Runnable {
     private double tinggiLimas;
     private double tinggiSegitigaSisiPendek;
     private double tinggiSegitigaSisiPanjang;

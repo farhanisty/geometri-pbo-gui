@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  *
  * @author farhannivta
  */
-public class CincinBola extends Bola {
+public class CincinBola extends Bola implements Runnable {
     private double h1;   // jarak bidang potong bawah dari pusat bola
     private double h2;   // jarak bidang potong atas dari pusat bola
     private double luasPermukaan;

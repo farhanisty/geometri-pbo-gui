@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class LimasBelahKetupat extends BelahKetupat implements BangunRuang {
+public class LimasBelahKetupat extends BelahKetupat implements BangunRuang, Runnable {
     private double tinggiLimas;
     private double tinggiSegitigaSisi;
     private double luasPermukaan;
